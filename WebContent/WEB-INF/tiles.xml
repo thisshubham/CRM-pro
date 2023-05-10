@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Inner Dashboad Tiles Defination Start -->
+	
+	<definition name="outerLayout" template="/pages/outerLayout.jsp">
+		<put-attribute name="title" value="Rohit Inventoty - Make accounting easy" />
+		<put-attribute name="body" value="/outer/index.jsp" />
+	</definition>
+
+	<!-- Inner Dashboad Tiles Defination End -->
+
+	<!-- Inner Dashboad Tiles Defination Start -->
+	
+	<definition name="homeLayout" template="/pages/innerLayout.jsp">
+		<put-attribute name="title" value="Welcome to Rohit Invoice - An Accounting Software" />
+		<put-attribute name="header" value="/pages/inner/inner_header.jsp" />
+		<put-attribute name="leftmenu" value="/pages/inner/inner_leftmenu.jsp" />
+		<put-attribute name="body" value="/pages/inner/inner_dashboard.jsp" />
+		<put-attribute name="footer" value="/pages/inner/inner_footer.jsp" />
+	</definition>
+	
+		
+	<definition name="innerLayout" template="/innerLayout.jsp">
+		<put-attribute name="title" value="Welcome to Rohit Invoice - An Accounting Software" />
+		<put-attribute name="header" value="/header.jsp" />
+		<put-attribute name="leftmenu" value="/leftmenu.jsp" />
+		<put-attribute name="body" value="/inner_dashboard.jsp" />
+		<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+
+	<!-- Inner Dashboad Tiles Defination End -->
+	
+	<!-- Inner Pages Tiles Defination Start -->
+	
+	<definition name="innerSettingLayout" template="/pages/innerSettingLayout.jsp">
+		<put-attribute name="title" value="Welcome to Rohit Invoice - An Accounting Software" />
+		<put-attribute name="header" value="/pages/inner/inner_header.jsp" />
+		<put-attribute name="leftmenu" value="/pages/inner/setting_leftmenu.jsp" />
+		<put-attribute name="body" value="/pages/inner/inner_dashboard.jsp" />
+		<put-attribute name="footer" value="/pages/inner/inner_footer.jsp" />
+	</definition>
+
+	<!-- Inner Pages Tiles Defination End -->
+	
+	<!-- Inner Pages Tiles Defination Start -->
+	
+	<definition name="fullPageLayout" template="/pages/fullPageLayout.jsp">
+		<put-attribute name="title" value="Welcome to Chouksay Traders - An Accounting Software" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body" value="/pages/inner/body.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+	<definition name="settingPageLayout" template="/pages/settingPageLayout.jsp">
+		<put-attribute name="title" value="Welcome to Rohit Invoice - An Accounting Software" />
+		<put-attribute name="header" value="/pages/inner/outerHeader.jsp" />
+		<put-attribute name="body" value="/pages/inner/body.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+	
+
+
+<definition name="outerExternalLayout" template="/externalLayout.jsp">
+		<put-attribute name="title" value="Welcome to Chouksey Invoice - An Accounting Software" />
+		<put-attribute name="header" value="/outer_header.jsp" />
+		
+		<put-attribute name="body" value="/outer_dashboard.jsp" />
+		<put-attribute name="footer" value="/outer_footer.jsp" />
+	</definition>
+	<!-- Inner Pages Tiles Defination End -->
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+

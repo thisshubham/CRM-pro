@@ -1,0 +1,3842 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<!-- upload max file size limit -->
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<constant name="struts.convention.result.path" value="/"></constant>
+
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<!-- Tiles Integration -->
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<default-action-ref name="index" />
+
+		<global-results>
+			<result name="exception">/pages/exception.jsp</result>
+			<result name="runtime_exception">/pages/runtime_exception.jsp</result>
+			<result name="error">/pages/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="exception"></exception-mapping>
+			<exception-mapping exception="java.lang.Error"
+				result="error"></exception-mapping>
+			<exception-mapping exception="java.lang.RuntimeException"
+				result="runtime_exception"></exception-mapping>
+		</global-exception-mappings>
+
+
+
+		<!-- @@@@@@@@@@@@@@@@@@@ Outer Pages Configuration @@@@@@@@@@@@@ -->
+
+		<!-- Outer pages -->
+
+		<action name="addContactUs" class="com.bst.ckt.action.ContactAction"
+			method="addContact">
+			<result name="success">index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+
+		<action name="userlogin" class="com.bst.ckt.action.CustomerLoginAction" method="configurationList">
+			<result name="success">outer/login.jsp</result>
+		</action>
+
+		<action name="dashboard">
+			<result name="success" type="tiles">dashboard_page</result>
+		</action>
+
+		<action name="omerainvoice" class="com.bst.ckt.action.CustomerRegistration">
+			<result name="success">outer/registration.jsp</result>
+		</action>
+
+		<action name="termsAndcondition">
+			<result name="success">outer/termsAndcondition.jsp</result>
+		</action>
+
+		<action name="privacyPolicy">
+			<result name="success">outer/privacyPolicy.jsp</result>
+		</action>
+		
+		<action name="termsAndconditionIndex">
+			<result name="success">termsAndcondition.jsp</result>
+		</action>
+
+		<action name="privacyPolicyIndex">
+			<result name="success">privacyPolicy.jsp</result>
+		</action>
+
+		<action name="customerQuickRegistration" class="com.bst.ckt.action.CustomerRegistration"
+			method="customerQuickRegistration">
+			<result name="success">outer/login.jsp</result>
+			<result name="input">outer/registration.jsp</result>
+			<result name="error">outer/registration.jsp</result>
+		</action>
+
+		<action name="verifyEmail" class="com.bst.ckt.action.CustomerRegistration"
+			method="verifyCustomer">
+			<result name="success">outer/login.jsp</result>
+			<result name="error">outer/verifyCustomerRegistrationFailed.jsp
+			</result>
+		</action>
+
+
+		<action name="customerRegistration" class="com.bst.ckt.action.CustomerRegistration"
+			method="registerCustomer">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="input">outer/registration.jsp</result>
+		</action>
+
+		<action name="isMobileNoExists" class="com.bst.ckt.action.CustomerRegistration"
+			method="isMobileNoAlreadyExists" />
+
+		<action name="isEmailIdExists" class="com.bst.ckt.action.CustomerRegistration"
+			method="isEmailAlreadyExist" />
+
+		<action name="isEmailIdSaved" class="com.bst.ckt.action.CustomerLoginAction"
+			method="isEmailAlreadySaved" />
+
+		<!-- Forgot Password Email Verification -->
+		<action name="isEmailIdRegistered" class="com.bst.ckt.action.CustomerRegistration"
+			method="forgetPasswordUsage">
+			<result name="success" type="redirect">outer/index.jsp</result>
+		</action>
+		
+		<action name="modulesOuterPage">
+			<result name="success" type="redirect">outer/modules.jsp</result>
+		</action>
+
+		<action name="addSocialSiteAction" class="com.bst.ckt.action.CustomerRegistration"
+			method="addSocialSite" />
+
+		<action name="customerLogin" class="com.bst.ckt.action.CustomerLoginAction">
+			<result name="success" type="redirect">omiInnerDashboard.action</result>
+			<result name="input" type="redirect">firstLogingPro.action</result>
+			<result name="login" type="redirect">firstLogingCompanySetting.action
+			</result>
+			<result name="error" type="redirect">userlogin.action</result>
+		</action>
+
+
+
+
+
+		<action name="customerLogout" class="com.bst.ckt.action.CustomerLoginAction"
+			method="customerUserLogout">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="input">outer/login.jsp</result>
+			<result name="error">outer/login.jsp</result>
+		</action>
+
+		<action name="forgotpassword">
+			<result name="success">outer/forgotpassword.jsp</result>
+		</action>
+
+		<!-- ***++++++++++++++***************First Login Setting**************** -->
+
+		<action name="firstLogingPro">
+			<result name="success" type="tiles">first_Loging_Pro</result>
+		</action>
+
+		<action name="updateLoginPassword" class="com.bst.ckt.action.CustomerLoginAction"
+			method="firstLoginChangePassword">
+			<result name="success" type="redirect">userlogin.action
+			</result>
+			<result name="input">outer/login.jsp</result>
+			<result name="error">outer/login.jsp</result>
+			<result name="login">omiInnerDashboard.action</result>
+		</action>
+
+		<action name="firstLogingCompanySetting" class="com.bst.ckt.action.CustomerLoginAction"
+			method="configurationList">
+			<result name="success" type="tiles">first_Loging_Company_Setting
+			</result>
+		</action>
+
+		<action name="updateFirstLogingCompanySetting" class="com.bst.ckt.action.CustomerLoginAction"
+			method="firstLoginConfigurationSetting">
+			<result name="success" type="redirect">omiInnerDashboard.action</result>
+			<result name="input" type="redirect">firstLogingCompanySetting.action
+			</result>
+			<result name="error">outer/login.jsp</result>
+		</action>
+
+
+		<!-- ***++++++++++****************First Login Setting End**************** -->
+
+
+		<!-- @@@@@@@@@@@@@@@@@@@ Inner Pages Configuration @@@@@@@@@@@@@ -->
+
+
+
+		<action name="omiInnerDashboard">
+			<result name="success" type="tiles">inner_dashboard</result>
+		</action>
+
+
+
+		<action name="updateFirstLoginPassword">
+			<result name="success" type="tiles">inner_dashboard</result>
+		</action>
+
+
+		<action name="dashboardUsers" class="com.bst.ckt.action.UserManagementAction">
+			<result name="success" type="tiles">dashboard_Users</result>
+		</action>
+
+		<action name="dashboardGraphReports">
+			<result name="success" type="tiles">dashboard_Graph_Reports</result>
+		</action>
+		<action name="leadStatusModule" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">dashboard_Analytics</result>
+		</action>
+
+
+		<action name="omiInnerDashboardBody">
+			<result name="success" type="tiles">inner_dashboard_body</result>
+		</action>
+
+		<!-- Inner Setting Page -->
+		<action name="renderSetting">
+			<result name="success" type="tiles">setting_init</result>
+		</action>
+
+		<!-- Company Setting Page -->
+		<action name="renderCompany">
+			<result name="success" type="tiles">setting_company</result>
+		</action>
+
+		<!-- Finance Setting Page -->
+		<action name="renderFinance">
+			<result name="success" type="tiles">setting_finance</result>
+		</action>
+
+		<!-- Tax Setting Page -->
+		<action name="renderTax">
+			<result name="success" type="tiles">setting_tax</result>
+		</action>
+
+		<!-- Accounts Setting Page -->
+		<action name="renderAccounts">
+			<result name="success" type="tiles">setting_accounts</result>
+		</action>
+
+		<!-- Bank Setting Page -->
+		<action name="renderBank">
+			<result name="success" type="tiles">setting_bank</result>
+		</action>
+
+		<!-- Currency Setting Page -->
+		<action name="renderCurrency">
+			<result name="success" type="tiles">setting_currency</result>
+		</action>
+
+		<!-- Invoice Setting Page -->
+		<action name="renderInvoice">
+			<result name="success" type="tiles">setting_invoicesetting</result>
+		</action>
+
+		<!-- Staff pages -->
+		<action name="renderStaffDashboard">
+			<result name="success" type="tiles">staff_dashboard</result>
+		</action>
+
+		<!-- Client pages -->
+		<action name="renderClientDashboard">
+			<result name="success" type="tiles">client_dashboard</result>
+		</action>
+
+		<!-- Contacts pages -->
+		<action name="renderContactsDashboard">
+			<result name="success" type="tiles">contacts_dashboard</result>
+		</action>
+
+		<!-- Items pages -->
+		<action name="renderItemsDashboard">
+			<result name="success" type="tiles">items_dashboard</result>
+		</action>
+
+		<!-- Estimate pages -->
+		<action name="renderEstimateDashboard">
+			<result name="success" type="tiles">estimate_dashboard</result>
+		</action>
+
+		<!-- Invoice pages -->
+		<action name="renderInvoiceDashboard">
+			<result name="success" type="tiles">invoice_dashboard</result>
+		</action>
+
+		<!-- Bill pages -->
+		<action name="renderBillDashboard">
+			<result name="success" type="tiles">bill_dashboard</result>
+		</action>
+
+
+		<!-- Reciept pages -->
+		<action name="renderRecieptDashboard">
+			<result name="success" type="tiles">reciept_dashboard</result>
+		</action>
+
+		<!-- Payment pages -->
+		<action name="renderPaymentDashboard">
+			<result name="success" type="tiles">payment_dashboard</result>
+		</action>
+
+		<!-- Reports pages -->
+		<action name="renderReportsDashboard">
+			<result name="success" type="tiles">reports_dashboard</result>
+		</action>
+
+		<!-- User Profile pages -->
+		<action name="renderUserProfile">
+			<result name="success" type="tiles">user_profile</result>
+		</action>
+
+
+		<!--dash board -->
+		<action name="dashboard">
+			<result name="success" type="tiles">dash_board</result>
+		</action>
+
+
+		<action name="dailyLeadReports" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">daily_lead_reports</result>
+		</action>
+		<action name="leadReports">
+			<result name="success" type="tiles">crm_Reports</result>
+		</action>
+		<action name="dailyLeadReportsSetting">
+			<result name="success" type="tiles">daily_lead_reports_setting
+			</result>
+
+		</action>
+
+
+		<action name="dailyLeadSet" class="com.bst.ckt.action.CustomizeGridAction"
+			method="leadGridHeaderData">
+			<result name="success" type="tiles">daily_lead_reports
+			</result>
+
+		</action>
+
+
+
+
+		<!-- ******************* MyAccount ********************** -->
+
+		<action name="myAccountSecurityChangePassword">
+			<result name="success" type="tiles">myAccount_Security_ChangePassword
+			</result>
+		</action>
+
+
+		<action name="myAccountSecurityChangeEmail">
+			<result name="success" type="tiles">myAccount_Security_ChangeEmail
+			</result>
+		</action>
+
+		<action name="profileTemplet" class="com.bst.ckt.action.MyAccountAction">
+			<result name="success" type="tiles">profile_Templet</result>
+		</action>
+
+		<action name="myAccountSocialInformation" class="com.bst.ckt.action.MyAccountAction"
+			method="showCustomerSocialDetails">
+			<result name="success" type="tiles">myAccount_Social_Information
+			</result>
+		</action>
+
+		<!-- <action name="profileTempletUpdate" class="com.bst.ckt.action.MyAccountAction" 
+			method="upDateCustomerInfo"> <result name="success" type="tiles">profile_Templet</result> 
+			<result name="input" type="tiles">profile_Templet</result> </action> -->
+
+		<action name="profileTempletUpdate" class="com.bst.ckt.action.MyAccountAction"
+			method="upDateCustomerInfo">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+
+			<result name="success" type="tiles">profile_Templet</result>
+			<result name="input" type="tiles">profile_Templet</result>
+		</action>
+
+		<action name="profileTempletUpdatePassword" class="com.bst.ckt.action.MyAccountAction"
+			method="updateCustomerLoginPassword">
+			<result name="success" type="tiles">changePassword_Templet</result>
+			<result name="input" type="tiles">changePassword_Templet</result>
+		</action>
+
+		<!-- -->
+
+		<action name="FormWhite">
+			<result name="success" type="tiles">Form_White</result>
+		</action>
+
+		<action name="tableForm">
+			<result name="success" type="tiles">table_Form</result>
+		</action>
+
+		<action name="changePasswordTemplet">
+			<result name="success" type="tiles">changePassword_Templet</result>
+		</action>
+
+
+
+		<action name="changeEmailTemplet">
+			<result name="success" type="tiles">changeEmail_Templet</result>
+		</action>
+
+		<action name="changeEmail" class="com.bst.ckt.action.MyAccountAction"
+			method="changeUserEmail">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="input">outer/login.jsp</result>
+		</action>
+
+		<action name="verifyChangeUserEmailId" class="com.bst.ckt.action.MyAccountAction"
+			method="verifyChangeUserEmailId">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="input">outer/login.jsp</result>
+		</action>
+
+
+		<action name="securityQuestionTemplet" class="com.bst.ckt.action.MyAccountAction">
+			<result name="success" type="tiles">securityQuestion_Templet</result>
+		</action>
+
+		<action name="addCustomerSocialInformation" class="com.bst.ckt.action.MyAccountAction"
+			method="addUserSocial">
+			<result name="success" type="tiles">myAccount_Social_Information
+			</result>
+			<result name="input" type="tiles">myAccount_Social_Information
+			</result>
+		</action>
+
+
+		<action name="closeAccountTemplet">
+			<result name="success" type="tiles">closeAccount_Templet</result>
+		</action>
+
+		<action name="closeAccount" class="com.bst.ckt.action.MyAccountAction"
+			method="closeAccountRequest">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="input">outer/login.jsp</result>
+		</action>
+
+		<action name="verifyCloseAccount" class="com.bst.ckt.action.MyAccountAction"
+			method="verifyCloseAccount">
+			<result name="success">index.jsp</result>
+			<result name="input">outer/login.jsp</result>
+			<result name="error">outer/login.jsp</result>
+		</action>
+
+		<action name="verifyContinueAccount" class="com.bst.ckt.action.MyAccountAction"
+			method="verifyContinueAccount">
+			<result name="success">outer/login.jsp</result>
+			<result name="input">outer/login.jsp</result>
+			<result name="error">outer/login.jsp</result>
+		</action>
+
+		<action name="loggerTemplet" class="com.bst.ckt.action.UserLoggerAction">
+			<result name="success" type="tiles">logger_Templet</result>
+		</action>
+
+		<!-- ************* Start mapping Lead *************** -->
+
+
+		<action name="leadDashboard" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">lead_Dashboard</result>
+			<result name="error" type="tiles">lead_Dashboard</result>
+		</action>
+
+		<action name="populateLeadDetailsAsPerSearch" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">lead_Dashboard</result>
+			<result name="error" type="tiles">lead_Dashboard</result>
+		</action>
+
+		<action name="renderAddNewLead" class="com.bst.ckt.action.LeadAction">
+			<result name="success" type="tiles">add_new_lead</result>
+		</action>
+
+		<action name="populateLeadClone" class="com.bst.ckt.action.LeadAction"
+			method="populateLeadDetails">
+			<result name="success" type="tiles">add_lead_clone</result>
+			<result name="error" type="tiles">add_lead_clone</result>
+		</action>
+
+		<action name="addLeadDetail" class="com.bst.ckt.action.LeadAction"
+			method="AddLeadDetails">
+			<result name="success" type="tiles">add_new_lead</result>
+			<result name="input" type="tiles">add_new_lead</result>
+		</action>
+
+		<action name="updateLeadContact" class="com.bst.ckt.action.LeadAction">
+			<result name="success" type="tiles">update_Lead_Contact</result>
+		</action>
+
+		<action name="renderaddLeadFollowUp" class="com.bst.ckt.action.LeadAction"
+			method="viewLeadFollowUpDetails">
+			<result name="success" type="tiles">add_Lead_Follow_Up</result>
+		</action>
+
+		<action name="renderAddLeadSocialInfo" class="com.bst.ckt.action.LeadAction"
+			method="showLeadSocialDetails">
+			<result name="success" type="tiles">add_Lead_Social_Info</result>
+		</action>
+
+		<action name="addLeadSocialInformation" class="com.bst.ckt.action.LeadAction"
+			method="addLeadSocial">
+			<result name="success" type="tiles">add_Lead_Social_Info</result>
+			<result name="input" type="tiles">add_Lead_Social_Info</result>
+		</action>
+
+		<!-- ******************* Start pdf Reports ********************** -->
+
+
+		<action name="leadPrintPDF" class="com.bst.ckt.action.LeadAction"
+			method="leadPrintPDF"></action>
+
+		<action name="notePrintPDF" class="com.bst.ckt.action.NoteAction"
+			method="notePrintPDF"></action>
+
+		<action name="vendorPrintPDF" class="com.bst.ckt.action.VendorsAction"
+			method="VendorPrintPDF"></action>
+
+		<!-- ******************* End Excel Reports ********************** -->
+
+
+		<action name="viewLead" class="com.bst.ckt.action.LeadAction"
+			method="viewLead">
+			<result name="success" type="tiles">view_Lead</result>
+		</action>
+
+		<action name="viewNextLeadInfo" class="com.bst.ckt.action.LeadAction"
+			method="nextAndPreviousViewLead">
+			<result name="success" type="tiles">view_Lead</result>
+			<result name="error" type="tiles">view_Lead</result>
+		</action>
+
+		<action name="viewPriviousLeadInfo" class="com.bst.ckt.action.LeadAction"
+			method="nextAndPreviousViewLead">
+			<result name="success" type="tiles">view_Lead</result>
+			<result name="error" type="tiles">view_Lead</result>
+		</action>
+
+
+		<action name="editLead" class="com.bst.ckt.action.LeadAction"
+			method="editLead">
+			<result name="success" type="tiles">edit_Lead_Information</result>
+		</action>
+
+		<action name="populateNextlead" class="com.bst.ckt.action.LeadAction"
+			method="editNextLead">
+			<result name="success" type="tiles">edit_Lead_Information</result>
+			<result name="error" type="tiles">edit_Lead_Information</result>
+		</action>
+
+		<action name="populatePreviouslead" class="com.bst.ckt.action.LeadAction"
+			method="previousEditLead">
+			<result name="success" type="tiles">edit_Lead_Information</result>
+			<result name="error" type="tiles">edit_Lead_Information</result>
+		</action>
+
+		<action name="updateLeadInformation" class="com.bst.ckt.action.LeadAction">
+			<result name="success" type="tiles">update_Lead_Information</result>
+		</action>
+
+		<action name="addLeadFollowUpDetails" class="com.bst.ckt.action.LeadAction"
+			method="addLeadFollowUp">
+			<result name="success" type="tiles">add_Lead_Follow_Up</result>
+			<result name="input" type="tiles">add_Lead_Follow_Up</result>
+		</action>
+
+		<action name="updateLead" class="com.bst.ckt.action.LeadAction"
+			method="updateLead">
+			<result name="success" type="tiles">update_Lead_Information</result>
+			<result name="input" type="tiles">update_Lead_Information</result>
+		</action>
+		<!-- editLeadContact -->
+		<action name="populatLeadContactInfo" class="com.bst.ckt.action.LeadAction"
+			method="editLead">
+			<result name="success" type="tiles">edit_Lead_Contact</result>
+		</action>
+		<action name="populateNextLeadContact" class="com.bst.ckt.action.LeadAction"
+			method="editNextLead">
+			<result name="success" type="tiles">edit_Lead_Contact</result>
+			<result name="error" type="tiles">edit_Lead_Contact</result>
+		</action>
+
+		<action name="populatePreviousLeadContact" class="com.bst.ckt.action.LeadAction"
+			method="previousEditLead">
+			<result name="success" type="tiles">edit_Lead_Contact</result>
+			<result name="error" type="tiles">edit_Lead_Contact</result>
+		</action>
+
+
+		<action name="updateLeadContact" class="com.bst.ckt.action.LeadAction"
+			method="updateLeadContactInfo">
+			<result name="success" type="tiles">update_Lead_Contact</result>
+			<result name="input" type="tiles">update_Lead_Contact</result>
+		</action>
+
+		<action name="renderAddLeadTitle" class="com.bst.ckt.action.LeadAction">
+			<result name="success">/pages/inner/add_Lead_Title.jsp</result>
+		</action>
+
+		<action name="addLeadTitle" class="com.bst.ckt.action.LeadAction"
+			method="addLeadTitle">
+			<result name="success">/pages/inner/add_Lead_Title.jsp</result>
+			<result name="input">/pages/inner/add_Lead_Title.jsp</result>
+			<result name="error">/pages/inner/add_Lead_Title.jsp</result>
+			<result name="none">/pages/inner/add_Lead_Title.jsp</result>
+		</action>
+
+
+		<action name="isLeadTitleExists" class="com.bst.ckt.action.LeadAction"
+			method="isLeadTitleExist" />
+
+
+
+
+		<!-- ************* End mapping Lead *************** -->
+
+		<!-- ************* Start mapping Campaign *************** -->
+
+		<action name="campaignDashboard" class="com.bst.ckt.action.CampaignAction">
+			<result name="success" type="tiles">campaign_Dashboard</result>
+		</action>
+
+		<action name="newCampaign" class="com.bst.ckt.action.CampaignAction">
+			<result name="success" type="tiles">new_Campaign</result>
+		</action>
+
+		<action name="viewCampaignDetails" class="com.bst.ckt.action.CampaignAction"
+			method="viewCampaignDetails">
+			<result name="success" type="tiles">view_Campaign_Details</result>
+		</action>
+
+		<action name="addCampaignInfo" class="com.bst.ckt.action.CampaignAction"
+			method="addCampaignDetails">
+			<result name="success" type="tiles">new_Campaign</result>
+			<result name="input" type="tiles">new_Campaign</result>
+			<result name="error" type="tiles">new_Campaign</result>
+		</action>
+
+		<action name="editCampaignDetails" class="com.bst.ckt.action.CampaignAction"
+			method="selectCampaignDetails">
+			<result name="success" type="tiles">edit_Campaign_Details</result>
+		</action>
+
+		<action name="updateCampaignDetails" class="com.bst.ckt.action.CampaignAction"
+			method="updateCampaignDetails">
+			<result name="success" type="tiles">edit_Campaign_Details</result>
+			<result name="input" type="tiles">edit_Campaign_Details</result>
+			<result name="error" type="tiles">edit_Campaign_Details</result>
+		</action>
+
+		<action name="campaigndPrintPDF" class="com.bst.ckt.action.CampaignAction"
+			method="campaigndPrintPDF"></action>
+
+		<action name="deleteCampaignDetails" class="com.bst.ckt.action.CampaignAction"
+			method="deleteCampaignDetails">
+			<result name="success" type="redirect">campaignDashboard</result>
+			<result name="error" type="redirect">campaignDashboard</result>
+		</action>
+
+
+		<action name="populatedCampaignDetailsAsPerSearch" class="com.bst.ckt.action.CampaignAction"
+			method="campaignDetailsGrid">
+			<result name="success" type="tiles">campaign_Dashboard</result>
+			<result name="error" type="tiles">campaign_Dashboard</result>
+		</action>
+
+
+		<!-- ************* End mapping Campaign *************** -->
+
+
+		<!-- ************* Start mapping Vendors *************** -->
+
+		<action name="vendorsDashboard" class="com.bst.ckt.action.VendorsAction">
+			<result name="success" type="tiles">vendors_Dashboard
+			</result>
+		</action>
+
+		<action name="newVendors" class="com.bst.ckt.action.VendorsAction">
+			<result name="success" type="tiles">new_Vendors
+			</result>
+		</action>
+
+		<action name="addVendorsInfo" class="com.bst.ckt.action.VendorsAction"
+			method="addVendorsDetails">
+			<result name="success" type="tiles">new_Vendors</result>
+			<result name="input" type="tiles">new_Vendors</result>
+			<result name="error" type="tiles">new_Vendors</result>
+		</action>
+
+		<action name="editVendordetails" class="com.bst.ckt.action.VendorsAction"
+			method="editVendors">
+			<result name="success" type="tiles">edit_VendorDetails
+			</result>
+		</action>
+
+		<action name="updateVendordetails" class="com.bst.ckt.action.VendorsAction"
+			method="updateVendorsDetails">
+			<result name="success" type="tiles">edit_VendorDetails
+			</result>
+		</action>
+
+		<action name="viewVendordetails" class="com.bst.ckt.action.VendorsAction"
+			method="viewVendorsDetails">
+			<result name="success" type="tiles">view_VendorDetails
+			</result>
+		</action>
+
+		<action name="nextViewVendordetails" class="com.bst.ckt.action.VendorsAction"
+			method="nextViewVendors">
+			<result name="success" type="tiles">view_VendorDetails
+			</result>
+			<result name="error" type="tiles">view_VendorDetails
+			</result>
+
+		</action>
+
+		<action name="previousViewVendordetails" class="com.bst.ckt.action.VendorsAction"
+			method="previousViewVendors">
+			<result name="success" type="tiles">view_VendorDetails
+			</result>
+			<result name="error" type="tiles">view_VendorDetails
+			</result>
+		</action>
+
+
+
+
+
+
+		<!-- ************* End mapping Vendors *************** -->
+
+
+
+
+		<!-- *************Accopunt mapping starts from here*************** -->
+
+		<action name="renderAcccountsDashboard" class="com.bst.ckt.action.AccountAction"
+			method="getAccountDetails">
+			<result name="success" type="tiles">render_Acccounts_Dashboard
+			</result>
+			<result name="error" type="tiles">render_Acccounts_Dashboard</result>
+		</action>
+
+		<action name="renderAddNewAccount" class="com.bst.ckt.action.AccountAction">
+			<result name="success" type="tiles">render_Add_New_Account</result>
+		</action>
+
+		<action name="renderAccountClone" class="com.bst.ckt.action.AccountAction"
+			method="editAccountInformationClone">
+			<result name="success" type="tiles">render_Account_Clone</result>
+		</action>
+
+		<action name="addNewAccountDetails" class="com.bst.ckt.action.AccountAction"
+			method="addNewAccount">
+			<result name="success" type="tiles">render_Add_New_Account</result>
+			<result name="input" type="tiles">render_Add_New_Account</result>
+		</action>
+
+		<action name="populatAccountInformation" class="com.bst.ckt.action.AccountAction"
+			method="editAccountInformation">
+			<result name="success" type="tiles">populat_Account_Information
+			</result>
+		</action>
+
+		<action name="updateAccountInformation" class="com.bst.ckt.action.AccountAction"
+			method="updateAccountInformation">
+			<result name="success" type="tiles">update_account_information
+			</result>
+			<result name="error" type="tiles">update_account_information</result>
+		</action>
+
+		<action name="renderAccountSocialInformation" class="com.bst.ckt.action.AccountAction">
+			<result name="success" type="tiles">account_social_information
+			</result>
+			<result name="error" type="tiles">account_social_information</result>
+		</action>
+
+		<action name="addAccountSocialInformation" class="com.bst.ckt.action.AccountAction"
+			method="accountSocialInformation">
+			<result name="success" type="tiles">add_account_social_information
+			</result>
+			<result name="input" type="tiles">add_account_social_information
+			</result>
+		</action>
+
+		<action name="populateAccountDetails" class="com.bst.ckt.action.AccountAction"
+			method="accountDetails">
+			<result name="success" type="tiles">view_account_information</result>
+			<result name="error" type="tiles">view_account_information</result>
+		</action>
+
+
+		<action name="viewNextAccountInfo" class="com.bst.ckt.action.AccountAction"
+			method="nextViewAccount">
+			<result name="success" type="tiles">view_account_information</result>
+			<result name="error" type="tiles">view_account_information</result>
+		</action>
+
+
+		<action name="viewPriviousAccountInfo" class="com.bst.ckt.action.AccountAction"
+			method="previousViewAccount">
+			<result name="success" type="tiles">view_account_information</result>
+			<result name="error" type="tiles">view_account_information</result>
+		</action>
+
+
+
+		<action name="populateNextAccount" class="com.bst.ckt.action.AccountAction"
+			method="editNextAccount">
+			<result name="success" type="tiles">populat_Account_Information
+			</result>
+			<result name="error" type="tiles">populat_Account_Information</result>
+		</action>
+
+		<action name="populatePreviousAccount" class="com.bst.ckt.action.AccountAction"
+			method="previousEditAccount">
+			<result name="success" type="tiles">populat_Account_Information
+			</result>
+			<result name="error" type="tiles">populat_Account_Information</result>
+		</action>
+		<!-- ************* End mapping Group *************** -->
+
+		<!-- ************* Start mapping Contacts *************** -->
+
+		<action name="contactsDashboard" class="com.bst.ckt.action.ContactsAction">
+			<result name="success" type="tiles">contacts_Dashboard</result>
+		</action>
+
+		<action name="addContacts" class="com.bst.ckt.action.ContactsAction">
+			<result name="success" type="tiles">add_Contacts</result>
+			<result name="input" type="tiles">add_Contacts</result>
+		</action>
+
+		<action name="addNewContacts" class="com.bst.ckt.action.ContactsAction"
+			method="addContacts">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">add_Contacts</result>
+			<result name="input" type="tiles">add_Contacts</result>
+		</action>
+
+		<action name="populateGroupsContact" class="com.bst.ckt.action.ContactsAction"
+			method="getContactInformation">
+			<result name="success" type="tiles">populate_Groups_Contact</result>
+		</action>
+
+		<action name="updateGroupsContactInfo" class="com.bst.ckt.action.ContactsAction"
+			method="updateContacts">
+			<result name="success" type="tiles">populate_Groups_Contact</result>
+		</action>
+
+		<action name="renderContactSocialInfo" class="com.bst.ckt.action.ContactsAction"
+			method="showContactsSocialDetails">
+			<result name="success" type="tiles">add_contact_social</result>
+		</action>
+
+		<action name="addGroupContactSocialInformation" class="com.bst.ckt.action.ContactsAction"
+			method="addGroupsContactSocial">
+			<result name="success" type="tiles">add_contact_social</result>
+			<result name="input" type="tiles">add_contact_social</result>
+		</action>
+
+		<action name="viewContactInformation" class="com.bst.ckt.action.ContactsAction"
+			method="viewContactInformation">
+			<result name="success" type="tiles">view_contacts_information</result>
+		</action>
+
+		<action name="editContacts" class="com.bst.ckt.action.ContactsAction"
+			method="editContactsdetails">
+			<result name="success" type="tiles">edit_contacts</result>
+			<result name="error" type="tiles">edit_contacts</result>
+		</action>
+
+		<action name="updateContacts" class="com.bst.ckt.action.ContactsAction"
+			method="updateContacts">
+			<result name="success" type="tiles">edit_contacts</result>
+			<result name="error" type="tiles">edit_contacts</result>
+		</action>
+
+		<action name="contactsExcelReport" class="com.bst.ckt.action.ContactsAction"
+			method="excelReport">
+		</action>
+
+		<action name="contactsPrintPDF" class="com.bst.ckt.action.ContactsAction"
+			method="contactsPrintPDF">
+
+		</action>
+
+
+		<action name="viewNextContactInfo" class="com.bst.ckt.action.ContactsAction"
+			method="viewNextContact">
+			<result name="success" type="tiles">view_contacts_information</result>
+			<result name="error" type="tiles">view_contacts_information</result>
+		</action>
+
+
+
+		<action name="viewPreviousContactInfo" class="com.bst.ckt.action.ContactsAction"
+			method="viewPreviousContact">
+			<result name="success" type="tiles">view_contacts_information</result>
+			<result name="error" type="tiles">view_contacts_information</result>
+		</action>
+		<!-- ************* End mapping Contacts *************** -->
+
+		<!-- ************* Start mapping Target *************** -->
+		<action name="targetDashboard">
+			<result name="success" type="tiles">target_Dashboard</result>
+		</action>
+
+		<action name="addCreatedTarget">
+			<result name="success" type="tiles">add_Created_Target</result>
+		</action>
+
+		<action name="updateFollowUpTarget">
+			<result name="success" type="tiles">update_Follow_Target</result>
+		</action>
+
+		<action name="viewFollowUpTarget">
+			<result name="success" type="tiles">view_Follow_Up_Target</result>
+		</action>
+		<!-- ************* End mapping Target *************** -->
+
+		<!-- ************* Start mapping Assignment *************** -->
+		<action name="assignmentDashboard">
+			<result name="success" type="tiles">assignment_Dashboard</result>
+		</action>
+
+		<action name="addCreatedAssignment">
+			<result name="success" type="tiles">add_Created_Assignment</result>
+		</action>
+
+		<action name="updateFollowUpAssignment">
+			<result name="success" type="tiles">update_FollowUp_Assignment
+			</result>
+		</action>
+
+		<action name="viewFollowUpAssignment">
+			<result name="success" type="tiles">view_FollowUp_Assignment</result>
+		</action>
+		<!-- ************* End mapping Assignment *************** -->
+
+		<!-- ************* Start mapping Target *************** -->
+		<action name="taskDashboard" class="com.bst.ckt.action.TaskAction">
+			<result name="success" type="tiles">task_Dashboard</result>
+		</action>
+
+		<action name="renderAddNewTask" class="com.bst.ckt.action.TaskAction">
+			<result name="success" type="tiles">add_created_Task</result>
+		</action>
+
+		<action name="addNewTaskAllocationDetails" class="com.bst.ckt.action.TaskAction"
+			method="addTaskAllocatedToDetails">
+			<result name="success" type="tiles">add_created_Task</result>
+			<result name="input" type="tiles">add_created_Task</result>
+		</action>
+
+		<action name="populateTaskAllocationDetails" class="com.bst.ckt.action.TaskAction"
+			method="populateTaskAllocationDetails">
+			<result name="success" type="tiles">populate_Task_Allocation_Details
+			</result>
+		</action>
+
+		<action name="updateTaskAllocationDetails" class="com.bst.ckt.action.TaskAction"
+			method="updateTaskAllocationDetails">
+			<result name="success" type="tiles">populate_Task_Allocation_Details
+			</result>
+			<result name="input" type="tiles">populate_Task_Allocation_Details
+			</result>
+		</action>
+
+		<action name="viewTaskAllocationDetails" class="com.bst.ckt.action.TaskAction"
+			method="getTaskDetails">
+			<result name="success" type="tiles">View_Task_Allocation_Details
+			</result>
+		</action>
+
+		<action name="renderAddTaskSubject" class="com.bst.ckt.action.TaskAction">
+			<result name="success">/pages/inner/add_task_subject.jsp</result>
+		</action>
+
+		<action name="addTaskSubject" class="com.bst.ckt.action.TaskAction"
+			method="addTaskSubjectDetails">
+			<result name="success">/pages/inner/add_task_subject.jsp</result>
+			<result name="input">/pages/inner/add_task_subject.jsp</result>
+			<result name="error">/pages/inner/add_task_subject.jsp</result>
+			<result name="none">/pages/inner/add_task_subject.jsp</result>
+		</action>
+
+		<action name="isTaskSubjectExists" class="com.bst.ckt.action.TaskAction"
+			method="isTaskSubjectExist" />
+
+		<!-- ************* End mapping Task *************** -->
+
+		<!-- ************* Start mapping Event *************** -->
+		<action name="eventDashboard" class="com.bst.ckt.action.EventAction">
+			<result name="success" type="tiles">event_Dashboard</result>
+		</action>
+
+		<action name="addCreatedEvent" class="com.bst.ckt.action.EventAction">
+			<result name="success" type="tiles">add_created_Event</result>
+		</action>
+		<action name="insertCreatedEvent" class="com.bst.ckt.action.EventAction"
+			method="insertNewEvent">
+			<result name="success" type="tiles">add_created_Event</result>
+			<result name="error" type="tiles">add_created_Event</result>
+		</action>
+		<action name="viewEventDetails" class="com.bst.ckt.action.EventAction"
+			method="viewEventDetail">
+			<result name="success" type="tiles">view_event_details</result>
+			<result name="error" type="tiles">view_event_details</result>
+		</action>
+		<action name="editEventDetail" class="com.bst.ckt.action.EventAction"
+			method="editEventDetails">
+			<result name="success" type="tiles">edit_event_detail</result>
+			<result name="error" type="tiles">edit_event_detail</result>
+		</action>
+
+		<action name="updateEventDetail" class="com.bst.ckt.action.EventAction"
+			method="updateEventDetails">
+			<result name="success" type="tiles">edit_event_detail</result>
+			<result name="error" type="tiles">edit_event_detail</result>
+		</action>
+		<!-- ************* End mapping Event *************** -->
+
+		<!-- ************* Start mapping Call *************** -->
+		<action name="callDashboard">
+			<result name="success" type="tiles">call_Dashboard</result>
+		</action>
+
+		<action name="addCreatedCall">
+			<result name="success" type="tiles">add_created_Call</result>
+		</action>
+
+		<action name="updateFollowUpCall">
+			<result name="success" type="tiles">update_FollowUp_Call</result>
+		</action>
+
+		<action name="viewFollowUpCall">
+			<result name="success" type="tiles">view_FollowUp_Call</result>
+		</action>
+		<!-- ************* End mapping Call *************** -->
+
+		<!-- ************* CRM Reports ************* -->
+		<action name="crmReports">
+			<result name="success" type="tiles">crm_Reports</result>
+		</action>
+
+		<action name="groupReports">
+			<result name="success" type="tiles">group_Reports</result>
+		</action>
+
+		<action name="contactsReports">
+			<result name="success" type="tiles">contacts_Reports</result>
+		</action>
+
+		<action name="targetReports">
+			<result name="success" type="tiles">target_Reports</result>
+		</action>
+
+		<action name="assignmentReports">
+			<result name="success" type="tiles">assignment_Reports</result>
+		</action>
+
+		<action name="taskReports">
+			<result name="success" type="tiles">task_Reports</result>
+		</action>
+
+		<action name="eventReports">
+			<result name="success" type="tiles">event_Reports</result>
+		</action>
+
+		<action name="callReports">
+			<result name="success" type="tiles">call_Reports</result>
+		</action>
+
+		<action name="dailyLeadReports" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">daily_lead_reports</result>
+		</action>
+
+		<action name="dailyGroupReports" class="com.bst.ckt.action.AccountAction"
+			method="getGroupDetails">
+			<result name="success" type="tiles">daily_group_reports</result>
+		</action>
+
+
+		<action name="customDateGroup" class="com.bst.ckt.action.AccountAction"
+			method="getGroupDetails">
+			<result name="success" type="tiles">custom_Date_Group</result>
+		</action>
+
+		<action name="customDateLead" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">custom_Date_Lead</result>
+		</action>
+
+
+		<action name="leadByOwner" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">lead_By_Owner</result>
+		</action>
+
+
+		<action name="reportByCompanyName" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">report_By_Company_Name</result>
+		</action>
+
+		<action name="leadFollowUpReport" class="com.bst.ckt.action.ReportsAction">
+			<result name="success" type="tiles">lead_Follow_Up_Report</result>
+		</action>
+
+		<action name="leadCreatedBy" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">lead_Created_By</result>
+		</action>
+
+		<action name="leadByStatus" class="com.bst.ckt.action.LeadAction"
+			method="leadDetailsGrid">
+			<result name="success" type="tiles">lead_By_Status</result>
+		</action>
+
+		<action name="groupByOwner">
+			<result name="success" type="tiles">group_By_Owner</result>
+		</action>
+
+		<action name="reportByCompanyNameGroup" class="com.bst.ckt.action.AccountAction"
+			method="getGroupDetails">
+			<result name="success" type="tiles">reportBy_Company_Name_Group
+			</result>
+		</action>
+
+		<action name="groupFollowUpReport">
+			<result name="success" type="tiles">group_FollowUp_Report</result>
+		</action>
+
+		<action name="groupCreatedBy" class="com.bst.ckt.action.AccountAction"
+			method="getGroupDetails">
+			<result name="success" type="tiles">group_Created_By</result>
+		</action>
+
+		<action name="groupByStatus" class="com.bst.ckt.action.AccountAction"
+			method="getGroupDetails">
+			<result name="success" type="tiles">group_By_Status</result>
+		</action>
+
+
+		<!-- ************* SETTING MAPPING ************* -->
+
+
+
+		<action name="settingCompanyCountry" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_company_country
+			</result>
+		</action>
+
+		<action name="insertCountry" class="com.bst.ckt.action.SettingAction"
+			method="insertCountryDetails">
+			<result name="success" type="tiles">setting_company_country</result>
+			<result name="error" type="tiles">setting_company_country</result>
+			<result name="none" type="tiles">setting_company_country</result>
+		</action>
+
+		<action name="settingEditCountry" class="com.bst.ckt.action.SettingAction"
+			method="editCountry">
+			<result name="success" type="tiles">setting_edit_country</result>
+		</action>
+
+		<action name="updateCompanyCountry" class="com.bst.ckt.action.SettingAction"
+			method="updateCountry">
+			<result name="success" type="tiles">setting_company_country</result>
+			<result name="error" type="tiles">setting_company_country</result>
+			<result name="none" type="tiles">setting_company_country</result>
+		</action>
+
+		<action name="settingCompanyTimezone" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_company_timezone
+			</result>
+		</action>
+
+		<action name="settingEditCategory" class="com.bst.ckt.action.SettingAction"
+			method="editCompanyCategory">
+			<result name="success" type="tiles">setting_Edit_Company_category
+			</result>
+		</action>
+
+		<action name="settingUpdateCategory" class="com.bst.ckt.action.SettingAction"
+			method="updateCompanyCategory">
+			<result name="success" type="tiles">setting_Company_Category</result>
+			<result name="input" type="tiles">setting_Company_Category</result>
+			<result name="none" type="tiles">setting_Company_Category</result>
+		</action>
+
+
+		<action name="settingEditTax" class="com.bst.ckt.action.SettingAction"
+			method="editTax">
+			<result name="success" type="tiles">setting_Edit_Tax</result>
+		</action>
+
+		<action name="settingUpdateTax" class="com.bst.ckt.action.SettingAction"
+			method="updateTax">
+			<result name="success" type="tiles">setting_Finance_Taxes</result>
+			<result name="input" type="tiles">setting_Finance_Taxes</result>
+			<result name="none" type="tiles">setting_Finance_Taxes</result>
+		</action>
+
+		<action name="settingEditLeadSource" class="com.bst.ckt.action.SettingAction"
+			method="editLeadSource">
+			<result name="success" type="tiles">setting_Edit_Lead_Source</result>
+		</action>
+
+		<action name="settingUpdateLeadSource" class="com.bst.ckt.action.SettingAction"
+			method="updateLeadSource">
+			<result name="success" type="tiles">setting_Marketing_Lead_Source
+			</result>
+			<result name="input" type="tiles">setting_Marketing_Lead_Source
+			</result>
+			<result name="none" type="tiles">setting_Marketing_Lead_Source
+			</result>
+		</action>
+		<action name="settingDashboardPage" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Dashboard_Page</result>
+		</action>
+
+		<action name="renderCompanySettings" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">company_setting</result>
+		</action>
+
+		<action name="settingCompanyType" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Company_Type</result>
+		</action>
+
+		<action name="insertCompanyType" class="com.bst.ckt.action.SettingAction"
+			method="insertCompanyType">
+			<result name="success" type="tiles">setting_Company_Type</result>
+			<result name="error" type="tiles">setting_Company_Type</result>
+		</action>
+
+		<action name="insertCompanyTypeDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertCompanyType">
+			<result name="success" type="tiles">setting_Company_Type</result>
+			<result name="error" type="tiles">setting_Company_Type</result>
+		</action>
+
+		<action name="settingEditCompanyType" class="com.bst.ckt.action.SettingAction"
+			method="editCompanyType">
+			<result name="success" type="tiles">setting_Edit_Company_Type</result>
+		</action>
+
+		<action name="settingUpdateCompanyType" class="com.bst.ckt.action.SettingAction"
+			method="updateCompanyType">
+			<result name="success" type="tiles">setting_Company_Type</result>
+			<result name="input" type="tiles">setting_Company_Type</result>
+			<result name="none" type="tiles">setting_Company_Type</result>
+		</action>
+		<action name="settingEditGLAccount" class="com.bst.ckt.action.SettingAction"
+			method="editGLAccount">
+			<result name="success" type="tiles">setting_Edit_GL_Account</result>
+		</action>
+
+		<action name="settingUpdateGLAccount" class="com.bst.ckt.action.SettingAction"
+			method="updateGLAccount">
+			<result name="success" type="tiles">setting_Finance_GLaccount</result>
+			<result name="input" type="tiles">setting_Finance_GLaccount</result>
+			<result name="none" type="tiles">setting_Finance_GLaccount</result>
+		</action>
+
+
+
+		<action name="settingCompanyCategory" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Company_Category</result>
+		</action>
+
+		<action name="insertCompanyCategory" class="com.bst.ckt.action.SettingAction"
+			method="insertCompanyCategory">
+			<result name="success" type="tiles">setting_Company_Category</result>
+			<result name="error" type="tiles">setting_Company_Category</result>
+		</action>
+		<action name="settingFinanceTaxes" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Finance_Taxes</result>
+		</action>
+
+		<action name="insertFinanceTaxes" class="com.bst.ckt.action.SettingAction"
+			method="insertFinanceTax">
+			<result name="success" type="tiles">setting_Finance_Taxes</result>
+			<result name="error" type="tiles">setting_Finance_Taxes</result>
+		</action>
+
+		<action name="settingCompanySector" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Company_Sector</result>
+		</action>
+
+		<action name="insertCompanySector" class="com.bst.ckt.action.SettingAction"
+			method="insertCompanySector">
+			<result name="success" type="tiles">setting_Company_Sector</result>
+			<result name="error" type="tiles">setting_Company_Sector</result>
+			<result name="none" type="tiles">setting_Company_Sector</result>
+		</action>
+
+		<action name="settingEditSector" class="com.bst.ckt.action.SettingAction"
+			method="editCompanySector">
+			<result name="success" type="tiles">setting_Edit_Company_Sector
+			</result>
+		</action>
+		<action name="settingUpdateSector" class="com.bst.ckt.action.SettingAction"
+			method="updateCompanySector">
+			<result name="success" type="tiles">setting_Company_Sector</result>
+			<result name="input" type="tiles">setting_Company_Sector</result>
+			<result name="none" type="tiles">setting_Company_Sector</result>
+		</action>
+		<action name="settingCompanyLocal">
+			<result name="success" type="tiles">setting_Company_Local</result>
+		</action>
+
+		<action name="updateCompanyLocal" class="com.bst.ckt.action.SettingAction"
+			method="updateCompanyLocal">
+			<result name="success" type="tiles">setting_Company_Local</result>
+			<result name="error" type="tiles">setting_Company_Local</result>
+			<result name="none" type="tiles">setting_Company_Local</result>
+		</action>
+
+
+
+		<action name="settingFinanceGLaccount" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Finance_GLaccount</result>
+		</action>
+
+
+		<action name="insertFinanceGLAccountDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertFinanceGLAccount">
+			<result name="success" type="tiles">setting_Finance_GLaccount</result>
+			<result name="error" type="tiles">setting_Finance_GLaccount</result>
+			<result name="none" type="tiles">setting_Finance_GLaccount</result>
+		</action>
+
+		<action name="settingMarketingLeadSource" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Marketing_Lead_Source
+			</result>
+		</action>
+
+		<action name="insertLeadSourceDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertMarketingLeadSource">
+			<result name="success" type="tiles">setting_Marketing_Lead_Source
+			</result>
+			<result name="error" type="tiles">setting_Marketing_Lead_Source
+			</result>
+			<result name="none" type="tiles">setting_Marketing_Lead_Source
+			</result>
+		</action>
+
+
+		<action name="settingMarketingAccountType" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Marketing_AccountType
+			</result>
+		</action>
+
+		<action name="insertAccountTypeDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertMarketingAccountType">
+			<result name="success" type="tiles">setting_Marketing_AccountType
+			</result>
+			<result name="error" type="tiles">setting_Marketing_AccountType
+			</result>
+			<result name="none" type="tiles">setting_Marketing_AccountType
+			</result>
+		</action>
+
+		<action name="settingEditAccountType" class="com.bst.ckt.action.SettingAction"
+			method="editAccountType">
+			<result name="success" type="tiles">setting_Edit_Account_type</result>
+		</action>
+
+		<action name="settingUpdateAccountType" class="com.bst.ckt.action.SettingAction"
+			method="updateAccountType">
+			<result name="success" type="tiles">setting_Marketing_AccountType
+			</result>
+			<result name="input" type="tiles">setting_Marketing_AccountType
+			</result>
+			<result name="none" type="tiles">setting_Marketing_AccountType
+			</result>
+		</action>
+
+		<action name="settingMarketingSLAName">
+			<result name="success" type="tiles">setting_Marketing_SLAName</result>
+		</action>
+
+		<action name="settingMarketingCampaignType" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Marketing_CampaignType
+			</result>
+		</action>
+
+		<action name="settingEditCampaignType" class="com.bst.ckt.action.SettingAction"
+			method="editCampaignType">
+			<result name="success" type="tiles">setting_Edit_Campaign_type
+			</result>
+		</action>
+
+		<action name="settingUpdateCampaignType" class="com.bst.ckt.action.SettingAction"
+			method="updateCampaignType">
+			<result name="success" type="tiles">setting_Marketing_CampaignType
+			</result>
+			<result name="input" type="tiles">setting_Marketing_CampaignType
+			</result>
+			<result name="none" type="tiles">setting_Marketing_CampaignType
+			</result>
+		</action>
+
+
+
+		<action name="insertCampaignTypeDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertMarketingCampaignType">
+			<result name="success" type="tiles">setting_Marketing_CampaignType
+			</result>
+			<result name="error" type="tiles">setting_Marketing_CampaignType
+			</result>
+			<result name="none" type="tiles">setting_Marketing_CampaignType
+			</result>
+		</action>
+
+		<action name="settingMarketingResponse">
+			<result name="success" type="tiles">setting_Marketing_Response
+			</result>
+		</action>
+
+		<action name="settingMarketingVendorCategory" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Marketing_VendorCategory
+			</result>
+		</action>
+
+		<action name="insertVendorCategoryDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertMarketingVendorCategory">
+			<result name="success" type="tiles">setting_Marketing_VendorCategory
+			</result>
+			<result name="error" type="tiles">setting_Marketing_VendorCategory
+			</result>
+			<result name="none" type="tiles">setting_Marketing_VendorCategory
+			</result>
+		</action>
+
+		<action name="settingEditVendorCategory" class="com.bst.ckt.action.SettingAction"
+			method="editVendorCategory">
+			<result name="success" type="tiles">setting_Edit_Vendor_Category
+			</result>
+		</action>
+
+		<action name="settingUpdateVendorCategory" class="com.bst.ckt.action.SettingAction"
+			method="updateVendorCategory">
+			<result name="success" type="tiles">setting_Marketing_VendorCategory
+			</result>
+			<result name="input" type="tiles">setting_Marketing_VendorCategory
+			</result>
+			<result name="none" type="tiles">setting_Marketing_VendorCategory
+			</result>
+		</action>
+
+		<action name="populateVendorDetailsAsPerSearch" class="com.bst.ckt.action.VendorsAction"
+			method="vendorDetailsGrid">
+			<result name="success" type="tiles">vendors_Dashboard
+			</result>
+			<result name="error" type="tiles">vendors_Dashboard
+			</result>
+		</action>
+
+
+		<action name="settingMarketingTravelMode" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Marketing_TravelMode
+			</result>
+		</action>
+
+		<action name="insertTravelModeDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertMarketingTravelMode">
+			<result name="success" type="tiles">setting_Marketing_TravelMode
+			</result>
+			<result name="error" type="tiles">setting_Marketing_TravelMode
+			</result>
+			<result name="none" type="tiles">setting_Marketing_TravelMode</result>
+		</action>
+
+		<action name="settingEditTravelMode" class="com.bst.ckt.action.SettingAction"
+			method="editTravelMode">
+			<result name="success" type="tiles">setting_Edit_Travel_Mode</result>
+		</action>
+
+		<action name="settingUpdatetravelMode" class="com.bst.ckt.action.SettingAction"
+			method="updateTravelMode">
+			<result name="success" type="tiles">setting_Marketing_TravelMode
+			</result>
+			<result name="input" type="tiles">setting_Marketing_TravelMode
+			</result>
+			<result name="none" type="tiles">setting_Marketing_TravelMode</result>
+		</action>
+
+		<action name="settingProductCategory">
+			<result name="success" type="tiles">setting_Product_Category</result>
+		</action>
+
+		<action name="insertProductCategoryDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertProductCategory">
+			<result name="success" type="tiles">setting_Product_Category</result>
+			<result name="error" type="tiles">setting_Product_Category</result>
+			<result name="none" type="tiles">setting_Product_Category</result>
+		</action>
+
+		<action name="settingEditProductCategory" class="com.bst.ckt.action.SettingAction"
+			method="editProductCategory">
+			<result name="success" type="tiles">setting_Edit_Product_category
+			</result>
+		</action>
+
+		<action name="settingUpdateProductCategory" class="com.bst.ckt.action.SettingAction"
+			method="updateProductCategory">
+			<result name="success" type="tiles">setting_Product_Category</result>
+			<result name="input" type="tiles">setting_Product_Category</result>
+			<result name="none" type="tiles">setting_Product_Category</result>
+		</action>
+
+		<action name="settingProductUsesUnit">
+			<result name="success" type="tiles">setting_Product_Uses_Unit</result>
+		</action>
+
+		<action name="insertProductUsesUnitDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertProductUsesUnit">
+			<result name="success" type="tiles">setting_Product_Uses_Unit</result>
+			<result name="error" type="tiles">setting_Product_Uses_Unit</result>
+			<result name="none" type="tiles">setting_Product_Uses_Unit</result>
+		</action>
+
+		<action name="settingEditProductUsesUnit" class="com.bst.ckt.action.SettingAction"
+			method="editProductUsesUnit">
+			<result name="success" type="tiles">setting_Edit_Product_Uses_Unit
+			</result>
+		</action>
+
+		<action name="settingUpdateProductUsesUnit" class="com.bst.ckt.action.SettingAction"
+			method="updateProductUsesUnit">
+			<result name="success" type="tiles">setting_Product_Uses_Unit</result>
+			<result name="input" type="tiles">setting_Product_Uses_Unit</result>
+			<result name="none" type="tiles">setting_Product_Uses_Unit</result>
+		</action>
+
+
+		<action name="settingSupportFAQCategory" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Support_FAQCategory
+			</result>
+		</action>
+
+		<action name="insertFAQCategoryDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertSupportFAQCategory">
+			<result name="success" type="tiles">setting_Support_FAQCategory
+			</result>
+			<result name="error" type="tiles">setting_Support_FAQCategory</result>
+			<result name="none" type="tiles">setting_Support_FAQCategory</result>
+		</action>
+
+		<action name="settingSupportChannel" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Support_Channel</result>
+		</action>
+
+		<action name="insertChannelDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertSupportChannel">
+			<result name="success" type="tiles">setting_Support_Channel</result>
+			<result name="error" type="tiles">setting_Support_Channel</result>
+			<result name="none" type="tiles">setting_Support_Channel</result>
+		</action>
+
+		<action name="settingSupportCaseImpact" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Support_Case_Impact
+			</result>
+		</action>
+
+		<action name="insertCaseImpactDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertSupportCaseImpact">
+			<result name="success" type="tiles">setting_Support_Case_Impact
+			</result>
+			<result name="error" type="tiles">setting_Support_Case_Impact</result>
+			<result name="none" type="tiles">setting_Support_Case_Impact</result>
+		</action>
+
+		<action name="settingSupportTaskArea" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_Support_Task_Area</result>
+		</action>
+
+		<action name="insertTaskAreaDetails" class="com.bst.ckt.action.SettingAction"
+			method="insertSupportTaskArea">
+			<result name="success" type="tiles">setting_Support_Task_Area</result>
+			<result name="error" type="tiles">setting_Support_Task_Area</result>
+			<result name="none" type="tiles">setting_Support_Task_Area</result>
+		</action>
+
+
+		<action name="updateCompanySetting" class="com.bst.ckt.action.SettingAction"
+			method="updateCompany">
+			<result name="success" type="tiles">company_setting</result>
+			<result name="input" type="tiles">company_setting</result>
+			<result name="none" type="tiles">company_setting</result>
+		</action>
+
+		<action name="settingsLocal">
+			<result name="success" type="tiles">settings_Local</result>
+		</action>
+
+		<action name="emailIdExists" class="com.bst.ckt.action.UserManagementAction"
+			method="emailAlreadyExist" />
+
+		<action name="settingsUser" class="com.bst.ckt.action.UserManagementAction">
+			<result name="success" type="tiles">settings_User</result>
+		</action>
+
+		<action name="createUser" class="com.bst.ckt.action.UserManagementAction">
+			<result name="success">/pages/inner/userCreate.jsp</result>
+		</action>
+
+		<action name="addUser" class="com.bst.ckt.action.UserManagementAction"
+			method="addUserDetail">
+			<result name="success">/pages/inner/userCreate.jsp</result>
+			<result name="error">/pages/inner/userCreate.jsp</result>
+		</action>
+
+		<action name="settingsDisclaimar">
+			<result name="success" type="tiles">settings_Disclaimar</result>
+		</action>
+
+		<action name="settingsEmail">
+			<result name="success" type="tiles">settings_Email</result>
+		</action>
+
+		<action name="settingsOther">
+			<result name="success" type="tiles">settings_Other</result>
+		</action>
+
+		<action name="settingAddUser">
+			<result name="success" type="tiles">setting_Add_User</result>
+		</action>
+
+		<action name="verifyCustomerStaffUser" class="com.bst.ckt.action.UserManagementAction"
+			method="verifyCustomerStaff">
+			<result name="success">outer/login.jsp</result>
+			<result name="error">outer/login.jsp
+			</result>
+		</action>
+
+		<action name="settingEditUser">
+			<result name="success" type="tiles">"setting_Edit_User"</result>
+		</action>
+
+		<action name="settingViewUser">
+			<result name="success" type="tiles">setting_View_User</result>
+		</action>
+
+		<action name="verifyChangeUserEmail" class="com.bst.ckt.action.UserManagementAction"
+			method="verifyChangeUserEmailId">
+			<result name="success">outer/verifyCustomerRegistration.jsp</result>
+			<result name="error">outer/verifyCustomerRegistrationFailed.jsp
+			</result>
+		</action>
+
+		<action name="viewUserDetails">
+			<result name="success" type="tiles">user_details_view</result>
+		</action>
+
+
+		<!-- ************* Document Repository ************* -->
+
+		<action name="documentRepositoryDashboard">
+			<result name="success" type="tiles">document_Repository</result>
+		</action>
+
+		<action name="folderDashboard">
+			<result name="success" type="tiles">document_folder_dashboard</result>
+		</action>
+		<action name="uploadFile" class="com.bst.ckt.action.documentUploadAction"
+			method="doUpload">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes"></param>
+				<param name="maximumSize">419430443</param> <!-- 4MB -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="redirect">folderDashboard.action</result>
+			<result name="input" type="tiles">document_folder_dashboard</result>
+		</action>
+
+		<!-- ******************* Start Excel Reports ********************** -->
+
+		<action name="leadExcelReport" class="com.bst.ckt.action.LeadAction"
+			method="excelReport"></action>
+
+		<action name="noteExcelReport" class="com.bst.ckt.action.NoteAction"
+			method="excelReport"></action>
+
+		<action name="vendorExcelReport" class="com.bst.ckt.action.VendorsAction"
+			method="excelReport"></action>
+
+		<!-- ******************* Start Excel Reports ********************** -->
+
+		<action name="renderCalculator">
+			<result name="success">/pages/inner/calculator.jsp</result>
+		</action>
+
+		<!-- ******************* dashboard popup ********************** -->
+
+		<action name="dashboardpopuptaskone">
+			<result name="success">/pages/inner/dashboard_popup_task_one.jsp
+			</result>
+		</action>
+
+		<action name="dashboardpopuptasktwo">
+			<result name="success">/pages/inner/dashboard_popup_task_two.jsp
+			</result>
+		</action>
+
+		<action name="dashboardpopuptaskthree">
+			<result name="success">/pages/inner/dashboard_popup_task_three.jsp
+			</result>
+		</action>
+
+		<action name="dashboardpopuptaskfour">
+			<result name="success">/pages/inner/dashboard_popup_task_four.jsp
+			</result>
+		</action>
+		<!-- ******************* dashboard popup ********************** -->
+
+
+		<!-- ******************* User Profile Start ********************** -->
+		<action name="userProfile" class="com.bst.ckt.action.UserManagementAction"
+			method="editUserDetails">
+			<result name="success" type="tiles">user_profile</result>
+		</action>
+
+		<action name="updateUserProfile" class="com.bst.ckt.action.UserManagementAction"
+			method="updateUserDetails">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">user_profile</result>
+		</action>
+
+
+		<action name="userProfileSocialInformation" class="com.bst.ckt.action.UserManagementAction"
+			method="userSocialGrid">
+			<result name="success" type="tiles">userProfile_Social_Information
+			</result>
+			<result name="error" type="tiles">userProfile_Social_Information
+			</result>
+		</action>
+
+		<action name="addUserSocialInformation" class="com.bst.ckt.action.UserManagementAction"
+			method="addUserSocial">
+			<result name="success" type="tiles">userProfile_Social_Information
+			</result>
+			<result name="error" type="tiles">userProfile_Social_Information
+			</result>
+		</action>
+
+		<action name="deleteAssignment" class="com.bst.ckt.action.MyAccountAction"
+			method="deleteCustomerSocialDetails">
+			<result name="success" type="tiles">myAccount_Social_Information
+			</result>
+			<result name="error" type="tiles">myAccount_Social_Information
+			</result>
+		</action>
+
+
+		<action name="userProfileSecurityChangePassword" class="com.bst.ckt.action.UserManagementAction">
+			<result name="success" type="tiles">userProfile_Security_ChangePassword
+			</result>
+		</action>
+
+
+
+
+		<action name="UpdateUserPassword" class="com.bst.ckt.action.UserManagementAction"
+			method="updateUserLoginPassword">
+			<result name="success" type="tiles">userProfile_Security_ChangePassword
+			</result>
+		</action>
+
+		<action name="userProfileSecurityChangeEmail">
+			<result name="success" type="tiles">userProfile_Security_ChangeEmail
+			</result>
+		</action>
+
+		<action name="userProfileloggerTemplet">
+			<result name="success" type="tiles">userProfile_Logger_Templet
+			</result>
+		</action>
+
+
+		<action name="userProfileChangeEmail" class="com.bst.ckt.action.UserManagementAction"
+			method="changeUserEmail">
+			<result name="success" type="tiles">userProfile_Security_ChangeEmail
+			</result>
+		</action>
+
+		<action name="securityQuestionForAuthntication" class="com.bst.ckt.action.MyAccountAction"
+			method="securityQuestionForAuthntication">
+			<result name="success" type="tiles">securityQuestion_Templet</result>
+			<result name="input" type="tiles">securityQuestion_Templet</result>
+		</action>
+
+		<action name="securityQuestion" class="com.bst.ckt.action.ForgetPasswordAction"
+			method="forgetPasswordSecurityQuestion">
+			<result name="success">outer/security_question.jsp</result>
+			<result name="error">outer/security_question.jsp</result>
+		</action>
+
+
+		<!-- ******************* User Profile End********************** -->
+
+
+
+		<!-- ******************* Expenses Mapping ********************** -->
+
+		<action name="expensesTravelBill" class="com.bst.ckt.action.ExpensesAction"
+			method="populateExpenses">
+			<result name="success" type="tiles">expenses_Travel_Bill
+			</result>
+		</action>
+
+
+
+		<action name="expensesDasbordTour" class="com.bst.ckt.action.ExpensesAction">
+			<result name="success" type="tiles">expenses_Dasboard_Monthly
+			</result>
+		</action>
+
+		<action name="addExpensesTourDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="expensesDetail">
+			<result name="success" type="tiles">expenses_Dasboard_Monthly</result>
+			<result name="input" type="tiles">expenses_Dasboard_Monthly</result>
+			<result name="error" type="tiles">expenses_Dasboard_Monthly</result>
+		</action>
+
+		<action name="expensesMonthlyExcelReport" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="monthlyExcelReport">
+			<result name="success" type="tiles">expenses_Dasboard
+			</result>
+			<result name="error" type="tiles">expenses_Dasboard
+			</result>
+
+		</action>
+
+		<action name="expensesTours">
+			<result name="success" type="tiles">expenses_Tours
+			</result>
+		</action>
+
+		<action name="ticketToursExpenses" class="com.bst.ckt.action.ExpensesAction"
+			method="insertTourTicketDetail">
+			<result name="success" type="tiles">expenses_Travel_Bill
+			</result>
+			<result name="input" type="tiles">expenses_Travel_Bill
+			</result>
+			<result name="error" type="tiles">expenses_Travel_Bill
+			</result>
+		</action>
+
+
+		<action name="hotelFare" class="com.bst.ckt.action.ExpensesAction"
+			method="insertHotelDetail">
+			<result name="success" type="tiles">expenses_Travel_Bill
+			</result>
+			<result name="input" type="tiles">expenses_Travel_Bill
+			</result>
+			<result name="error" type="tiles">expenses_Travel_Bill
+			</result>
+			<result name="none" type="tiles">expenses_Travel_Bill
+			</result>
+		</action>
+
+		<action name="editExpensesDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="showTourExpensesDetail">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="getExpensesTicketDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="getExpensesTicketFare">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="getExpensesBoardingDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="getExpensesBoarding">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="updateExpensesTourDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="updateExpensesTour">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+			<result name="input" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="updateExpensesTicketDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="updateExpensesTicketFare">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="editExpensesBoardingDetails" class="com.bst.ckt.action.ExpensesAction"
+			method="updateExpensesBoarding">
+			<result name="success" type="tiles">edit_expenses_details
+			</result>
+			<result name="error" type="tiles">edit_expenses_details
+			</result>
+		</action>
+
+		<action name="viewExpenses" class="com.bst.ckt.action.ExpensesAction"
+			method="showTourExpensesDetail">
+			<result name="success" type="tiles">view_Expenses</result>
+			<result name="error" type="tiles">view_Expenses</result>
+		</action>
+
+
+		<action name="viewNextExpensesInfo" class="com.bst.ckt.action.ExpensesAction"
+			method="nextViewExpenses">
+			<result name="success" type="tiles">view_Expenses</result>
+			<result name="error" type="tiles">view_Expenses</result>
+		</action>
+
+
+		<action name="viewPreviousExpensesInfo" class="com.bst.ckt.action.ExpensesAction"
+			method="previousViewExpenses">
+			<result name="success" type="tiles">view_Expenses</result>
+			<result name="error" type="tiles">view_Expenses</result>
+		</action>
+
+
+
+
+
+		<!-- ******************* Expenses Mapping End ****************** -->
+		<!-- ******************* Expenses Monthly Mapping Start ****************** -->
+
+		<action name="expensesMonthly" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="populateMonthlyExpenses">
+			<result name="success" type="tiles">expenses_Monthly</result>
+		</action>
+
+		<action name="expensesMonthlys" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="insertDetail">
+			<result name="success" type="tiles">expenses_Monthly</result>
+			<result name="error" type="tiles">expenses_Monthly</result>
+		</action>
+
+
+		<action name="expensesDasbord" class="com.bst.ckt.action.ExpensesMonthlyAction">
+			<result name="success" type="tiles">expenses_Dasboard
+			</result>
+		</action>
+
+
+		<action name="addMonthlyTravelDetail" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="addMonthlyTravelExpense">
+			<result name="success" type="tiles">expenses_Monthly
+			</result>
+			<result name="input" type="tiles">expenses_Monthly
+			</result>
+			<result name="none" type="tiles">expenses_Monthly
+			</result>
+		</action>
+
+		<!--View monthly travel -->
+		<action name="viewMonthlyTravelExpenses" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="viewMonthlyTravelExpenses">
+			<result name="success" type="tiles">view_Monthly_Travel_Expenses
+			</result>
+			<result name="error" type="tiles">view_Monthly_Travel_Expenses
+			</result>
+			<result name="input" type="tiles">view_Monthly_Travel_Expenses
+			</result>
+		</action>
+		<!--/ end View monthly travel -->
+
+		<action name="addMonthlyOtherDetail" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="addMonthlyOtherExpenses">
+			<result name="success" type="tiles">expenses_Monthly
+			</result>
+			<result name="input" type="tiles">expenses_Monthly
+			</result>
+			<result name="none" type="tiles">expenses_Monthly
+			</result>
+		</action>
+
+		<!-- View other expenses================= -->
+		<action name="viewOtherExpenses" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="viewOtherExpenses">
+			<result name="success" type="tiles">viewOther_Expenses
+			</result>
+			<result name="error" type="tiles">viewOther_Expenses
+			</result>
+			<result name="input" type="tiles">viewOther_Expenses
+			</result>
+		</action>
+		<!--End View other expenses================= -->
+
+		<action name="expensesMonthlyDetails" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="populateMonthlyExpenses">
+			<result name="success" type="tiles">expenses_Monthly</result>
+		</action>
+
+		<action name="viewExpensesMonthly" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="viewMonthlyExpensesDetail">
+			<result name="success" type="tiles">view_expenses_Monthly</result>
+		</action>
+
+		<action name="editExpensesMonthly" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="editExpensesMonthlyDetail">
+			<result name="success" type="tiles">edit_expenses_Monthly</result>
+		</action>
+		<action name="updateExpensesMonthlyDetail" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="updateExpensesMonthly">
+			<result name="success" type="tiles">edit_expenses_Monthly</result>
+		</action>
+
+		<action name="viewNextMonthlyExpensesInfo" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="nextViewMonthlyExpenses">
+			<result name="success" type="tiles">view_expenses_Monthly</result>
+			<result name="error" type="tiles">view_expenses_Monthly</result>
+		</action>
+
+		<action name="viewPreviousMonthlyExpensesInfo" class="com.bst.ckt.action.ExpensesMonthlyAction"
+			method="previousViewMonthlyExpenses">
+			<result name="success" type="tiles">view_expenses_Monthly</result>
+			<result name="error" type="tiles">view_expenses_Monthly</result>
+		</action>
+
+
+		<!-- ******************* Expenses Monthly Mapping End ****************** -->
+
+
+
+		<!-- ************* Start mapping Support *************** -->
+
+		<!-- ************* Start mapping Support *************** -->
+
+		<action name="SupportFaqs" class="com.bst.ckt.action.SupportFaqAction">
+			<result name="success" type="tiles">Support_Faqs</result>
+			<result name="error" type="tiles">Support_Faqs</result>
+		</action>
+		<action name="SupportFaqsXLSReport" class="com.bst.ckt.action.SupportFaqAction"
+			method="excelReportSupportFaq">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+
+
+		<action name="SupportAddFaqs" class="com.bst.ckt.action.SupportFaqAction">
+			<result name="success" type="tiles">Support_Add_Faqs</result>
+		</action>
+
+
+		<action name="renderAddFaqProductName" class="com.bst.ckt.action.SupportFaqAction">
+			<result name="success">/pages/Support/faq_addProductName.jsp</result>
+		</action>
+
+		<action name="addFaqProductName" class="com.bst.ckt.action.SupportFaqAction"
+			method="addProductName">
+			<result name="success">/pages/Support/faq_addProductName.jsp</result>
+			<result name="input">/pages/Support/faq_addProductName.jsp</result>
+			<result name="error">/pages/Support/faq_addProductName.jsp</result>
+			<result name="none">/pages/Support/faq_addProductName.jsp</result>
+		</action>
+		<action name="isProductNameExists" class="com.bst.ckt.action.SupportFaqAction"
+			method="isProductNameExist" />
+
+
+		<action name="addCasesProductName" class="com.bst.ckt.action.SupportCasesAction"
+			method="addCasesProductName">
+			<result name="success">/pages/Support/cases_add_productName.jsp</result>
+			<result name="input">/pages/Support/cases_add_productName.jsp</result>
+			<result name="error">/pages/Support/cases_add_productName.jsp</result>
+			<result name="none">/pages/Support/cases_add_productName.jsp</result>
+		</action>
+		<action name="isCasesProductNameExist" class="com.bst.ckt.action.SupportCasesAction"
+			method="isProductNameExist" />
+
+
+
+		<action name="addCasesContactName" class="com.bst.ckt.action.SupportCasesAction"
+			method="addCasesContactName">
+			<result name="success">/pages/Support/cases_add_ContactName.jsp</result>
+			<result name="input">/pages/Support/cases_add_ContactName.jsp</result>
+			<result name="error">/pages/Support/cases_add_ContactName.jsp</result>
+			<result name="none">/pages/Support/cases_add_ContactName.jsp</result>
+		</action>
+
+
+
+		<action name="addCasesOrganizationName" class="com.bst.ckt.action.SupportCasesAction"
+			method="addCasesOrganizationName">
+			<result name="success">/pages/Support/cases_add_Orgnization.jsp</result>
+			<result name="input">/pages/Support/cases_add_Orgnization.jsp</result>
+			<result name="error">/pages/Support/cases_add_Orgnization.jsp</result>
+			<result name="none">/pages/Support/cases_add_Orgnization.jsp</result>
+		</action>
+
+
+
+
+
+
+		<action name="addTicketProductName" class="com.bst.ckt.action.SupportTicketAction"
+			method="addTicketProductName">
+			<result name="success" type="tiles">Ticket_Product_Name</result>
+			<result name="input" type="tiles">Ticket_Product_Name</result>
+			<result name="error" type="tiles">Ticket_Product_Name</result>
+			<result name="none" type="tiles">Ticket_Product_Name</result>
+		</action>
+
+
+		<action name="isTicketProductNameExist" class="com.bst.ckt.action.SupportTicketAction"
+			method="isProductNameExist" />
+
+
+		<action name="addTicketContactName" class="com.bst.ckt.action.SupportTicketAction"
+			method="addTicketContactName">
+			<result name="success" type="tiles">Ticket_Contact_Name</result>
+			<result name="input" type="tiles">Ticket_Contact_Name</result>
+			<result name="error" type="tiles">Ticket_Contact_Name</result>
+			<result name="none" type="tiles">Ticket_Contact_Name</result>
+		</action>
+		<action name="supportViewFaqPDF" class="com.bst.ckt.action.SupportFaqAction"
+			method="faqPrintPDF">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+
+
+		<action name="ticketExcelReport" class="com.bst.ckt.action.SupportTicketAction"
+			method="excelReportTicket">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+		<action name="ticketPrintPDF" class="com.bst.ckt.action.SupportTicketAction"
+			method="ticketsPrintPDF">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+
+
+		<action name="renderAddCasesProductName" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success">/pages/Support/cases_add_productName.jsp</result>
+		</action>
+
+		<action name="renderAddContactName" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success">/pages/Support/cases_add_ContactName.jsp</result>
+		</action>
+
+		<action name="renderAddSlaName" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success">/pages/Support/cases_add_SLAName.jsp</result>
+		</action>
+
+		<action name="renderAddOrgnization" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success">/pages/Support/cases_add_Orgnization.jsp</result>
+		</action>
+
+		<action name="addSupportFaqs" class="com.bst.ckt.action.SupportFaqAction"
+			method="addNewFaq">
+			<result name="success" type="tiles">Support_Add_Faqs</result>
+			<result name="error" type="tiles">Support_Add_Faqs</result>
+		</action>
+
+		<action name="supportViewFaq" class="com.bst.ckt.action.SupportFaqAction"
+			method="viewFaqInfo">
+			<result name="success" type="tiles">support_View_Faq</result>
+		</action>
+
+		<action name="supportEditFaq" class="com.bst.ckt.action.SupportFaqAction"
+			method="editFaqInfo">
+			<result name="success" type="tiles">support_Edit_Faq</result>
+		</action>
+
+		<action name="supportUpdateFaq" class="com.bst.ckt.action.SupportFaqAction"
+			method="updateFaqInfo">
+			<result name="success" type="tiles">support_Edit_Faq</result>
+			<result name="error" type="tiles">support_Edit_Faq</result>
+		</action>
+
+		<action name="deleteFaqDetail" class="com.bst.ckt.action.SupportFaqAction"
+			method="deleteSupportFaqDetails">
+			<result name="success" type="tiles">Support_Faqs</result>
+		</action>
+
+		<action name="SupportCases" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success" type="tiles">Support_Cases</result>
+			<result name="error" type="tiles">Support_Cases</result>
+		</action>
+
+		<action name="supportCasesExcelReport" class="com.bst.ckt.action.SupportCasesAction"
+			method="casesExcelReport">
+			<result name="success" type="tiles">Support_Cases</result>
+			<result name="error" type="tiles">Support_Cases</result>
+		</action>
+		<action name="supportCasesReportPDF" class="com.bst.ckt.action.SupportCasesAction"
+			method="casesPrintPDF">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+
+
+		<action name="SupportAddCases" class="com.bst.ckt.action.SupportCasesAction">
+			<result name="success" type="tiles">Support_Add_Cases</result>
+		</action>
+
+		<action name="addSupportCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="addNewCases">
+			<result name="success" type="tiles">Support_Add_Cases</result>
+			<result name="error" type="tiles">Support_Add_Cases</result>
+		</action>
+
+		<action name="supportEditCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="editCasesInfo">
+			<result name="success" type="tiles">support_Edit_Cases</result>
+		</action>
+
+		<action name="supportViewCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="viewCasesInfo">
+			<result name="success" type="tiles">support_View_Cases</result>
+		</action>
+
+		<action name="supportUpdateCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="updateCasesInfo">
+			<result name="success" type="tiles">support_Edit_Cases</result>
+			<result name="error" type="tiles">support_Edit_Cases</result>
+		</action>
+		<action name="deleteCasesDetail" class="com.bst.ckt.action.SupportCasesAction"
+			method="deleteSupportCasesDetails">
+			<result name="success" type="tiles">Support_Cases</result>
+		</action>
+		<action name="ticketDashboard" class="com.bst.ckt.action.SupportTicketAction">
+			<result name="success" type="tiles">Support_ticket_Dashboard</result>
+			<result name="error" type="tiles">Support_ticket_Dashboard</result>
+		</action>
+
+		<action name="renderAddNewTicket" class="com.bst.ckt.action.SupportTicketAction">
+			<result name="success" type="tiles">Add_New_Ticket</result>
+		</action>
+
+		<action name="addTicketDetail" class="com.bst.ckt.action.SupportTicketAction"
+			method="addNewTicket">
+			<result name="success" type="tiles">Add_New_Ticket</result>
+			<result name="error" type="tiles">Add_New_Ticket</result>
+		</action>
+
+		<action name="editTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="editTicketInfo">
+			<result name="success" type="tiles">edit_Ticket_Info</result>
+		</action>
+
+		<action name="supportUpdateTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="updateTicketInfo">
+			<result name="success" type="tiles">edit_Ticket_Info</result>
+			<result name="error" type="tiles">edit_Ticket_Info</result>
+		</action>
+
+		<action name="viewTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="viewTicketInfo">
+			<result name="success" type="tiles">view_Ticket</result>
+		</action>
+
+
+
+
+
+
+		<action name="populateTicketDetailsAsPerSearch" class="com.bst.ckt.action.SupportTicketAction"
+			method="">
+			<result name="success" type="tiles">Support_ticket_Dashboard</result>
+			<result name="error" type="tiles">Support_ticket_Dashboard</result>
+		</action>
+
+		<action name="populateFaqSearch" class="com.bst.ckt.action.SupportFaqAction"
+			method="">
+			<result name="success" type="tiles">Support_Faqs</result>
+			<result name="error" type="tiles">Support_Faqs</result>
+		</action>
+
+		<action name="populateCasesSearch" class="com.bst.ckt.action.SupportCasesAction"
+			method="">
+			<result name="success" type="tiles">Support_Cases</result>
+			<result name="error" type="tiles">Support_Cases</result>
+		</action>
+
+		<action name="renderTicketProductName" class="com.bst.ckt.action.SupportTicketAction">
+			<result name="success" type="tiles">Ticket_Product_Name</result>
+		</action>
+
+		<action name="renderTicketContactName" class="com.bst.ckt.action.SupportTicketAction">
+			<result name="success" type="tiles">Ticket_Contact_Name</result>
+		</action>
+
+		<action name="populateNextFaq" class="com.bst.ckt.action.SupportFaqAction"
+			method="editNextFaq">
+			<result name="success" type="tiles">support_Edit_Faq</result>
+			<result name="error" type="tiles">support_Edit_Faq</result>
+		</action>
+
+		<action name="populatePreviousFaq" class="com.bst.ckt.action.SupportFaqAction"
+			method="previousEditFaq">
+			<result name="success" type="tiles">support_Edit_Faq</result>
+			<result name="error" type="tiles">support_Edit_Faq</result>
+		</action>
+
+		<action name="viewNextFaqInfo" class="com.bst.ckt.action.SupportFaqAction"
+			method="nextViewFaq">
+			<result name="success" type="tiles">support_View_Faq</result>
+			<result name="error" type="tiles">support_View_Faq</result>
+		</action>
+
+		<action name="viewPriviousFaqInfo" class="com.bst.ckt.action.SupportFaqAction"
+			method="previousViewFaq">
+			<result name="success" type="tiles">support_View_Faq</result>
+			<result name="error" type="tiles">support_View_Faq</result>
+		</action>
+
+		<action name="populateNextTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="editNextTicket">
+			<result name="success" type="tiles">edit_Ticket_Info</result>
+			<result name="error" type="tiles">edit_Ticket_Info</result>
+		</action>
+
+		<action name="populatePreviousTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="previousEditTicket">
+			<result name="success" type="tiles">edit_Ticket_Info</result>
+			<result name="error" type="tiles">edit_Ticket_Info</result>
+		</action>
+
+		<action name="viewNextTicketInfo" class="com.bst.ckt.action.SupportTicketAction"
+			method="nextViewTicket">
+			<result name="success" type="tiles">view_Ticket</result>
+			<result name="error" type="tiles">view_Ticket</result>
+		</action>
+
+		<action name="viewPriviousTicketInfo" class="com.bst.ckt.action.SupportTicketAction"
+			method="previousViewTicket">
+			<result name="success" type="tiles">view_Ticket</result>
+			<result name="error" type="tiles">view_Ticket</result>
+		</action>
+
+		<action name="populateNextCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="editNextCases">
+			<result name="success" type="tiles">support_Edit_Cases</result>
+			<result name="error" type="tiles">support_Edit_Cases</result>
+		</action>
+
+		<action name="populatePreviousCases" class="com.bst.ckt.action.SupportCasesAction"
+			method="previousEditCases">
+			<result name="success" type="tiles">support_Edit_Cases</result>
+			<result name="error" type="tiles">support_Edit_Cases</result>
+		</action>
+
+		<action name="viewNextCasesInfo" class="com.bst.ckt.action.SupportCasesAction"
+			method="nextViewCases">
+			<result name="success" type="tiles">support_View_Cases</result>
+			<result name="error" type="tiles">support_View_Cases</result>
+		</action>
+
+		<action name="viewPriviousCasesInfo" class="com.bst.ckt.action.SupportCasesAction"
+			method="previousViewCases">
+			<result name="success" type="tiles">support_View_Cases</result>
+			<result name="error" type="tiles">support_View_Cases</result>
+		</action>
+
+		<action name="deleteTicket" class="com.bst.ckt.action.SupportTicketAction"
+			method="deleteTicketDetails">
+			<result name="success" type="tiles">Support_ticket_Dashboard</result>
+			<result name="error" type="tiles">Support_ticket_Dashboard</result>
+		</action>
+
+
+
+		<action name="serviceContractDashboard" class="com.bst.ckt.action.SupportServiceContractAction">
+			<result name="success" type="tiles">
+				Support_Service_Contract_Dashboard
+			</result>
+			<result name="error" type="tiles">Support_Service_Contract_Dashboard
+			</result>
+		</action>
+
+		<action name="addNewServiceContract" class="com.bst.ckt.action.SupportServiceContractAction">
+			<result name="success" type="tiles">Add_Service_Contract
+			</result>
+		</action>
+
+		<action name="addServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="addNewServiceContact">
+			<result name="success" type="tiles">Add_Service_Contract</result>
+			<result name="error" type="tiles">Add_Service_Contract</result>
+		</action>
+
+		<action name="populateServiceAsPerSearch" class="com.bst.ckt.action.SupportServiceContractAction">
+			<result name="success" type="tiles">Support_Service_Contract_Dashboard
+			</result>
+			<result name="error" type="tiles">Support_Service_Contract_Dashboard
+			</result>
+		</action>
+
+		<action name="editServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="editServiceContactInfo">
+			<result name="success" type="tiles">edit_Service_Contract</result>
+		</action>
+
+		<action name="updateServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="updateServiceContactInfo">
+			<result name="success" type="tiles">edit_Service_Contract</result>
+			<result name="error" type="tiles">edit_Service_Contract</result>
+		</action>
+
+		<action name="viewServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="viewServiceContactInfo">
+			<result name="success" type="tiles">view_Service_Contract</result>
+		</action>
+
+		<action name="deleteServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="deleteServiceContactDetail">
+			<result name="success" type="tiles">Support_Service_Contract_Dashboard
+			</result>
+		</action>
+
+		<action name="populatePreviousServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="previousEditServiceContact">
+			<result name="success" type="tiles">edit_Service_Contract</result>
+			<result name="error" type="tiles">edit_Service_Contract</result>
+		</action>
+
+		<action name="populateNextServiceContrct" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="editNextContactService">
+			<result name="success" type="tiles">edit_Service_Contract</result>
+			<result name="error" type="tiles">edit_Service_Contract</result>
+		</action>
+
+		<action name="viewPriviousServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="previousViewServiceContact">
+			<result name="success" type="tiles">view_Service_Contract</result>
+			<result name="error" type="tiles">view_Service_Contract</result>
+		</action>
+
+		<action name="viewNextServiceContract" class="com.bst.ckt.action.SupportServiceContractAction"
+			method="nextViewServiceContact">
+			<result name="success" type="tiles">view_Service_Contract</result>
+			<result name="error" type="tiles">view_Service_Contract</result>
+		</action>
+
+		<action name="renderReletedTo" class="com.bst.ckt.action.SupportServiceContractAction">
+			<result name="success" type="tiles">releted_to</result>
+		</action>
+
+		<!-- ************* End mapping Support *************** -->
+
+
+
+
+
+		<!-- ******************* Note Start ********************** -->
+
+
+		<action name="noteDashboard" class="com.bst.ckt.action.NoteAction">
+			<result name="success" type="tiles">note_dash_board</result>
+		</action>
+
+		<action name="newNote" class="com.bst.ckt.action.NoteAction"
+			method="insertNoteDetail">
+			<result name="success" type="tiles">add_new_note</result>
+			<result name="error" type="tiles">add_new_note</result>
+			<result name="none" type="tiles">add_new_note</result>
+		</action>
+
+		<action name="addNewNote" class="com.bst.ckt.action.NoteAction">
+			<result name="success" type="tiles">note_dash_board</result>
+		</action>
+
+		<action name="editNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="editNote">
+			<result name="success" type="tiles">edit_note_details</result>
+		</action>
+
+		<action name="editPreviousNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="previousEditNote">
+			<result name="success" type="tiles">edit_note_details</result>
+		</action>
+		<action name="editNextNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="editNextNote">
+			<result name="success" type="tiles">edit_note_details</result>
+		</action>
+
+		<action name="updateNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="updateNote">
+			<result name="success" type="tiles">edit_note_details</result>
+		</action>
+
+		<action name="viewNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="viewNote">
+			<result name="success" type="tiles">view_note_details</result>
+		</action>
+		<action name="viewPreviousNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="previousViewNote">
+			<result name="success" type="tiles">view_note_details</result>
+		</action>
+		<action name="viewNextNoteDetails" class="com.bst.ckt.action.NoteAction"
+			method="nextViewNote">
+			<result name="success" type="tiles">view_note_details</result>
+		</action>
+
+		<action name="populateNoteDetailsAsPerSearch" class="com.bst.ckt.action.NoteAction"
+			method="noteDetailsGrid">
+			<result name="success" type="tiles">note_dash_board</result>
+			<result name="error" type="tiles">note_dash_board</result>
+		</action>
+
+
+
+		<!-- ******************* Note End ********************** -->
+
+
+
+		<!-- ******************* Assignment ********************** -->
+		<action name="assignmentsDashboard" class="com.bst.ckt.action.AssignmentAction">
+			<result name="success" type="tiles">assignments_Dashboard</result>
+		</action>
+
+		<action name="addNewAssignment" class="com.bst.ckt.action.AssignmentAction">
+			<result name="success" type="tiles">add_new_assignment</result>
+		</action>
+
+		<action name="newAssignment" class="com.bst.ckt.action.AssignmentAction"
+			method="insertDetail">
+			<result name="success" type="tiles">add_new_assignment</result>
+		</action>
+
+
+		<action name="viewAssignmentDetails" class="com.bst.ckt.action.AssignmentAction"
+			method="viewAssignment">
+			<result name="success" type="tiles">view_assignment_details</result>
+			<result name="error" type="tiles">view_assignment_details</result>
+		</action>
+
+		<action name="editAssignment" class="com.bst.ckt.action.AssignmentAction"
+			method="editAssignmentdetails">
+			<result name="success" type="tiles">edit_assignment</result>
+			<result name="error" type="tiles">edit_assignment</result>
+		</action>
+
+		<action name="assignmentPDF" class="com.bst.ckt.action.AssignmentAction"
+			method="assignmentPrintPDF">
+			<result name="success" type="tiles">assignments_Dashboard</result>
+		</action>
+
+
+		<action name="assignmentExcelReport" class="com.bst.ckt.action.AssignmentAction"
+			method="assignmentexcelReportDetails">
+			<result name="success" type="tiles">assignments_Dashboard</result>
+		</action>
+
+
+		<action name="updateAssignments" class="com.bst.ckt.action.AssignmentAction"
+			method="updateAssignment">
+			<result name="success" type="tiles">edit_assignment</result>
+			<result name="error" type="tiles">edit_assignment</result>
+		</action>
+
+		<action name="populateAssignmentDetailsAsPerSearch" class="com.bst.ckt.action.AssignmentAction"
+			method="assignmentDetailsGrid">
+			<result name="success" type="tiles">assignments_Dashboard</result>
+			<result name="error" type="tiles">assignments_Dashboard</result>
+		</action>
+
+		<!-- ******************* Assignment End ********************** -->
+
+		<!-- *******************Product DashBoard Start**************** -->
+		<action name="productDashboard" class="com.bst.ckt.action.ProductAction">
+			<result name="success" type="tiles">product_dash_board</result>
+		</action>
+
+		<action name="prodcutExcelReport" class="com.bst.ckt.action.ProductAction"
+			method="excelReportProduct">
+			<result name="success" type="tiles">product_dash_board</result>
+			<result name="error" type="tiles">product_dash_board</result>
+		</action>
+
+		<action name="populateProductSearch" class="com.bst.ckt.action.ProductAction"
+			method="productDetailsGrid">
+			<result name="success" type="tiles">product_dash_board</result>
+			<result name="error" type="tiles">product_dash_board</result>
+		</action>
+
+		<action name="addNewProduct" class="com.bst.ckt.action.ProductAction">
+			<result name="success" type="tiles">add_new_product</result>
+
+		</action>
+
+		<action name="addProduct" class="com.bst.ckt.action.ProductAction"
+			method="addNewProduct">
+			<result name="success" type="tiles">add_new_product</result>
+			<result name="error" type="tiles">add_new_product</result>
+
+		</action>
+		
+		<action name="editProductDetail" class="com.bst.ckt.action.ProductAction"
+			method="editProductDetails">
+			<result name="success" type="tiles">edit_product_details</result>
+			<result name="error" type="tiles">edit_product_details</result>
+		</action>
+		
+		<action name="updateProductDetail" class="com.bst.ckt.action.ProductAction"
+			method="updateProductDetails">
+			<result name="success" type="tiles">edit_product_details</result>
+			<result name="error" type="tiles">edit_product_details</result>
+		</action>
+
+		<action name="viewProductDetails" class="com.bst.ckt.action.ProductAction"
+			method="viewProductDetail">
+			<result name="success" type="tiles">view_product_details</result>
+			<result name="error" type="tiles">view_product_details</result>
+		</action>
+
+		<action name="deleteProductDetail" class="com.bst.ckt.action.ProductAction"
+			method="deleteProductDetails">
+			<result name="success" type="redirect">productDashboard</result>
+			<result name="error" type="redirect">productDashboard</result>
+		</action>
+		<action name="viewNextProductInfo" class="com.bst.ckt.action.ProductAction"
+			method="nextViewProduct">
+			<result name="success" type="tiles">view_product_details</result>
+			<result name="error" type="tiles">view_product_details</result>
+		</action>
+		<action name="viewPreviousProductInfo" class="com.bst.ckt.action.ProductAction"
+			method="previousViewProduct">
+			<result name="success" type="tiles">view_product_details</result>
+			<result name="error" type="tiles">view_product_details</result>
+		</action>
+		<action name="editNextProductInfo" class="com.bst.ckt.action.ProductAction"
+			method="editNextProductDetails">
+			<result name="success" type="tiles">edit_product_details</result>
+			<result name="error" type="tiles">edit_product_details</result>
+		</action>
+
+		<action name="editPreviousProductInfo" class="com.bst.ckt.action.ProductAction"
+			method="previousEditProduct">
+			<result name="success" type="tiles">edit_product_details</result>
+			<result name="error" type="tiles">edit_product_details</result>
+		</action>
+
+		<action name="productPrintPDF" class="com.bst.ckt.action.ProductAction"
+			method="productsPrintPDF">
+			<result name="success" type="tiles"></result>
+			<result name="error" type="tiles"></result>
+		</action>
+
+		<!-- *******************Product End**************** -->
+
+
+		<!-- *******************Activities Mapping Start****************** -->
+		<action name="ActivitiesDashboard">
+			<result name="success" type="tiles">Activities_Dashboard</result>
+		</action>
+		<action name="AddnewActivities">
+			<result name="success" type="tiles">Add_new_Activites</result>
+		</action>
+		<!-- *******************Activities Mapping End****************** -->
+		<!-- *******************Document Start**************** -->
+		<action name="documentDashboard" class="" method="">
+			<result name="success" type="tiles">document_dashboard</result>
+		</action>
+
+		<action name="addNewDocument" class="" method="">
+			<result name="success" type="tiles">add_new_document</result>
+			<result name="error" type="tiles">add_new_document</result>
+		</action>
+		<!-- *******************Document End**************** -->
+
+
+		<!-- *******************Forget Password**************** -->
+		<action name="securityQuestion" class="com.bst.ckt.action.ForgetPasswordAction"
+			method="forgetPasswordSecurityQuestion">
+			<result name="success">outer/security_question.jsp</result>
+			<result name="error">outer/security_question.jsp</result>
+		</action>
+
+
+		<action name="updatePasswordTemplet" class="com.bst.ckt.action.ForgetPasswordAction"
+			method="checkEmailIdAndAnswer">
+			<result name="success" type="redirect">userlogin.action</result>
+			<result name="error">outer/security_question.jsp</result>
+		</action>
+		<!-- *******************Forget Password End************ -->
+
+
+
+		<!-- ##################################### CONTACT SUPPORT MAPPING START 
+			################################### -->
+
+		<action name="addContactSupportUs" class="com.bst.ckt.support.ContactSupportAction"
+			method="addContactSupport">
+			<result name="success">index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+
+		<!-- ##################################### CONTACT SUPPORT MAPPING END 
+			################################### -->
+
+		<!-- ******************Dashboard Start*********************** -->
+		<action name="dashboardGridPage" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">dashboard_Grid_page</result>
+		</action>
+
+		<action name="dashboardUsersGrid" class="com.bst.ckt.action.UserManagementAction">
+			<result name="success" type="tiles">dashboard_Users_Grid</result>
+		</action>
+		<!-- ******************Dashboard End*********************** -->
+
+
+
+		<!-- ********************Analytics Mapping Start******************** -->
+		<action name="leadBySourceModule" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">lead_by_source_analytics</result>
+		</action>
+
+		<action name="leadStatusModules" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">lead_by_status_analytics</result>
+		</action>
+
+		<action name="leadCreatedByModule" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">lead_by_created_by_analytics
+			</result>
+		</action>
+
+		<action name="leadByindustryModule" class="com.bst.ckt.dashboard.DashBoardAction">
+			<result name="success" type="tiles">lead_by_industry_analytics
+			</result>
+		</action>
+
+		<!-- ********************Analytics Mapping End******************** -->
+
+
+
+
+		<action name="renderAcccountsDashboard" class="com.bst.ckt.action.AccountAction"
+			method="getAccountDetails">
+			<result name="success" type="tiles">render_Acccounts_Dashboard
+			</result>
+			<result name="error" type="tiles">render_Acccounts_Dashboard</result>
+		</action>
+
+
+
+		<action name="accountExcelReport" class="com.bst.ckt.action.AccountAction"
+			method="excelReport"></action>
+
+		<action name="campaignExcelReport" class="com.bst.ckt.action.CampaignAction"
+			method="campaignExcelReport"></action>
+			
+			
+			
+			<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
+			<!--********************************MHVIDISHA****************************  -->
+			
+			<action name="addItem" class="com.bst.ckt.action.ProductAction">
+			<result name="success" type="tiles">add_new_item</result>
+		    </action>
+		    
+		    <action name="itemDashboard" class="com.bst.ckt.action.ProductAction">
+			<result name="success" type="tiles">item_dash_board</result>
+		    </action>
+		    
+		    
+		    
+		    
+		    <action name="salesDashboard" class="com.bst.ckt.action.EstimateAction" method="estimateGrid">
+			<result name="success" type="tiles">sales_Dashboard</result>
+			<result name="error" type="tiles">sales_Dashboard</result>
+			</action>
+			
+			<!-- <action name="salesBill" class="com.bst.ckt.action.ExpensesMonthlyAction">
+			<result name="success" type="tiles">sales_bill</result>
+		    </action> -->
+			<action name="salesBill" class="com.bst.ckt.action.EstimateAction" >
+			<result name="success" type="tiles">sales_bill</result>
+		    </action>
+			
+			<action name="addNewEstimate" class="com.bst.ckt.action.EstimateAction"
+			method="addEstimate">
+			<!-- <result name="success" type="redirect">sales_Dashboard</result> -->
+			 <result name="success" type="tiles">sales_Dashboard</result>
+			<result name="input" type="tiles">add_estimate</result>
+		</action>
+
+
+
+
+		 <action name="estimate" class="com.bst.ckt.action.EstimateAction" >
+			<result name="success" type="redirect">salesDashboard.action</result>
+		</action> 
+		
+		
+			<action name="productDescriptionAndPrice" class="com.bst.ckt.action.EstimateAction"
+			method="getProdDscAndPrice">
+
+		    </action>
+			
+			
+		<action name="productListJASON" class="com.bst.ckt.action.EstimateAction"
+			method="getProductJASONList">
+		</action>
+			<!--********************************MHVIDISHA****************************  -->
+
+        <action name="viewEstimateAction" class="com.bst.ckt.action.EstimateAction"
+			method="viewEstimate">
+			<result name="success" type="tiles">view_Estimate</result>
+		</action>
+
+<action name="deleteEstimateAction" class="com.bst.ckt.action.EstimateAction"
+			method="deleteEstimate">
+			<result name="success" type="redirect">salesDashboard.action</result>
+		</action>
+
+
+<!--********************************cement****************************  -->
+          <action name="purchaseDashbord" class="com.bst.ckt.action.PurchaseCementAction" method="execute">
+			<result name="success" type="tiles">purchase_dashbord</result>
+			<result name="error" type="tiles">purchase_dashbord</result>
+		    </action>
+
+
+
+        <action name="addNewPurchase" class="com.bst.ckt.action.PurchaseCementAction" >
+			<result name="success" type="tiles">add_New_Purchase</result>
+			<result name="error" type="tiles">add_New_Purchase</result>
+		    </action>
+		    
+		    
+		    
+		    
+
+<!--********************************STEEL BAR****************************  -->
+<action name="steelBarDashbord" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="execute">
+			<result name="success" type="tiles">steel_Bar_dashbord</result>
+			<result name="error" type="tiles">steel_Bar_dashbord</result>
+		    </action>
+
+
+            <action name="addNewSteelbar" class="com.bst.ckt.action.PurchaseSteelBarsAction">
+			<result name="success" type="tiles">add_New_SteelBar</result>
+			<result name="error" type="tiles">add_New_SteelBar</result>
+		    </action>
+
+            <action name="invoiceDashbord" class="com.bst.ckt.action.InvoiceSaleAction" method="execute">
+			<result name="success" type="tiles">invoice_dashboard</result>
+			<result name="error" type="tiles">invoice_dashboard</result>
+		    </action>
+		    
+		    
+		    <action name="addSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction">
+			<result name="success" type="tiles">add_sale_invoice</result>
+			<result name="error" type="tiles">add_sale_invoice</result>
+		    </action>
+		    
+		    
+		    
+		 	<action name="productDescriptionAndPriceForInvoiceSale" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="getProdDscAndPrice">
+
+		    </action>
+ 
+ 
+            <action name="regularCustomerDetailsForInvoiceSale" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="getRegularCustomerDetails">
+
+		    </action>
+		    
+		    <action name="consumerCustomerDetailsForInvoiceSale" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="getConsumerCustomerDetails">
+
+		    </action>
+		    
+		    <action name="addSalesDetails" class="com.bst.ckt.action.InvoiceSaleAction" method="addSalesDetails">
+          <result name="success" type="tiles">invoice_dashboard</result>
+          <result name="error" type="tiles">invoice_dashboard</result>
+		    </action>
+		    
+		    
+		    <action name="productListJASONForSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="getProductJASONList">
+		</action>
+		
+		<action name="viewSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction" method="viewSpecificSalesDetail">
+			<result name="success" type="tiles">view_sale_invoice_detail</result>
+			<result name="error" type="tiles">view_sale_invoice_detail</result>
+		    </action>
+		
+		
+		<action name="deleteSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction" method="deleteSpecificSalesDetails">
+			<result name="success" type="redirect">invoiceDashbord.action</result>
+			<result name="error" type="tiles">invoice_dashboard</result>
+		    </action>
+		
+		
+		
+		<!-- *************customer*************** -->
+		<action name="customerDashboard" class="com.bst.ckt.action.RetailerCustomerAction" method="execute">
+			<result name="success" type="tiles">customer_dashboard</result>
+		    </action>
+		    
+		    <action name="addRetailercustomerAction" class="com.bst.ckt.action.RetailerCustomerAction">
+			<result name="success" type="tiles">addRetailercustomer</result>
+			<result name="error" type="tiles">addRetailercustomer</result>
+		    </action>
+		
+		 <action name="insertRetailerInfo" class="com.bst.ckt.action.RetailerCustomerAction" method="addRetailer">
+			<result name="success" type="redirect">customerDashboard.action</result>
+		    </action>
+		
+		<action name="consumerDashboardAction" class="com.bst.ckt.action.ConsumerCustomerAction" method="execute">
+			<result name="success" type="tiles">consumer_Dashboard</result>
+			<result name="error" type="tiles">consumer_Dashboard</result>
+		    </action>
+		
+		 <action name="addConsumerCustomerAction" class="com.bst.ckt.action.ConsumerCustomerAction" >
+			<result name="success" type="tiles">addConsumerCustomer</result>
+		    </action>
+		
+		
+		<action name="insertConsumerInfo" class="com.bst.ckt.action.ConsumerCustomerAction" method="addConsumer">
+			<result name="success" type="redirect">consumerDashboardAction.action</result>
+		    </action>
+		    
+		    
+		    <action name="viewConsumerDetailsAction" class="com.bst.ckt.action.ConsumerCustomerAction" method="viewSpecificConsumerDetail">
+			<result name="success" type="tiles">viewConsumerCustomerdetail</result>
+		    </action>
+		    
+		    
+		    
+		    <action name="viewRetailerdetailAction" class="com.bst.ckt.action.RetailerCustomerAction" method="viewSpecificRetailerDetail">
+			<result name="success" type="tiles">viewRetailerCustomerdetail</result>
+		    </action>
+		    
+		    
+		     <action name="completeRetailerTransaction" class="com.bst.ckt.action.RetailerCustomerAction" method="execute">
+			<result name="success" type="tiles">viewCompleteRetailerDetails</result>
+			<result name="error" type="tiles">viewCompleteRetailerDetails</result>
+		    </action>
+		    
+		     <action name="completeConsumerTransaction" class="com.bst.ckt.action.ConsumerCustomerAction" method="execute">
+			<result name="success" type="tiles">viewCompleteConsumerDetails</result>
+			<result name="error" type="tiles">viewCompleteConsumerDetails</result>
+		    </action>
+		    
+		     <action name="updateSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction" method="viewSpecificRecordForEdit">
+			<result name="success" type="tiles">updateSaleInvoceDetails</result>
+		    </action>
+		    
+		    
+		    <action name="deleteRetailerRecord" class="com.bst.ckt.action.RetailerCustomerAction" method="deleteSpecificRetailerDetails">
+			<result name="success" type="redirect">customerDashboard.action</result>
+			<result name="error" type="redirect">customerDashboard.action</result>
+		    </action>
+		    
+		    
+		    <action name="deleteConsumerRecord" class="com.bst.ckt.action.ConsumerCustomerAction" method="deleteSpecificConsumerDetails">
+			<result name="success" type="redirect">consumerDashboardAction.action</result>
+			<result name="error" type="redirect">consumerDashboardAction.action</result>
+		    </action>
+		    
+		    <action name="updateRetailerDetailsAction" class="com.bst.ckt.action.RetailerCustomerAction" method="viewSpecificRecordForEdit">
+			<result name="success" type="tiles">updateRetailerDetails</result>
+			<result name="error" type="tiles">updateRetailerDetails</result>
+		    </action>
+		    
+		    
+		    <action name="updateConsumerDetailsAction" class="com.bst.ckt.action.ConsumerCustomerAction" method="viewSpecificRecordForEdit">
+			<result name="success" type="tiles">updateConsumerDetails</result>
+			<result name="error" type="tiles">updateConsumerDetails</result>
+		    </action>
+		    
+		    
+		    
+		    
+		    
+		    
+		     <action name="updateSalesDone" class="com.bst.ckt.action.InvoiceSaleAction" method="updateSpecificSalesRecord">
+			<result name="success" type="redirect">invoiceDashbord.action</result>
+			<result name="error" type="redirect">updateSaleInvoice.action</result>
+		    </action>
+		    
+		    
+		    <!-- <action name="payDueAmountOfCustomerAction" class="com.bst.ckt.action.PayDueAmountOfCustomerAction" method="">
+			<result name="success" type="tiles">payDueAmountOfCustomer</result>
+		    </action> -->
+		    
+		    <action name="payDueAmountOfCustomerAction" class="com.bst.ckt.action.RetailerCustomerAction" method="retrieveRetailerTransactionByIdForPayDue">
+			<result name="success" type="tiles">payDueAmountOfCustomer</result>
+			<result name="error" type="tiles">payDueAmountOfCustomer</result>
+		    </action>
+		    
+		    
+		    <action name="regularCustomerDetailsForPayDueRetailer" class="com.bst.ckt.action.PayDueAmountOfCustomerAction"
+			method="getRegularCustomerDetails">
+
+		    </action>
+		    
+		    <action name="transactionDetailsForPayDueRetailer" class="com.bst.ckt.action.PayDueAmountOfCustomerAction"
+			method="getTransactionDetailsByBillNo">
+
+		    </action>
+		    
+		    
+		  <!--   <action name="addPayDueRetailerTransaction" class="com.bst.ckt.action.PayDueAmountOfCustomerAction"
+			method="addRetailerTransaction">
+             <result name="success" type="redirect">payDueAmountOfCustomerAction.action</result>
+             <result name="success" type="tiles">payDueAmountOfCustomerAction.action</result>
+		    </action> -->
+		    
+		    
+		    <action name="addPayDueRetailerTransaction" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="addPayDue">
+             <result name="success" type="redirect">completeRetailerTransaction.action</result>
+             <result name="error" type="tiles">payDueAmountOfCustomer</result>
+		    </action> 
+		    
+		    
+		    
+		   <!--  <action name="payDueAmountOfConsumerAction" class="com.bst.ckt.action.PayDueAmountOfConsumerCustomerAction">
+             <result name="success" type="tiles">payDueAmountOfConsumer</result>
+             <result name="error" type="tiles">payDueAmountOfConsumer</result>
+		    </action> -->
+		    
+		    
+		    <action name="payDueAmountOfConsumerAction" class="com.bst.ckt.action.ConsumerCustomerAction"  method="retrieveConsumerTransactionByIdForPayDue">
+             <result name="success" type="tiles">payDueAmountOfConsumer</result>
+             <result name="error" type="tiles">payDueAmountOfConsumer</result>
+		    </action>
+		    
+		    
+		     <action name="consumerCustomerDetailsForPayDueConsumer" class="com.bst.ckt.action.PayDueAmountOfConsumerCustomerAction"
+			method="getConsumerCustomerDetails">
+
+		    </action>
+		    
+		    
+		    <action name="transactionDetailsForPayDueConsumer" class="com.bst.ckt.action.PayDueAmountOfConsumerCustomerAction"
+			method="getTransactionDetailsByBillNo">
+
+		    </action>
+		    
+		    
+		    <action name="addPayDueConsumerTransaction" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="addPayDue">
+             <result name="success" type="redirect">completeConsumerTransaction.action</result>
+             <result name="error" type="tiles">payDueAmountOfConsumer</result>
+             
+		    </action>
+		    
+		    
+		    <action name="updateRetailerDone" class="com.bst.ckt.action.RetailerCustomerAction" method="updateSpecificRetailerRecord">
+			<result name="success" type="redirect">customerDashboard.action</result>
+			<result name="error" type="tiles">updateRetailerDetails</result>
+		    </action>
+		    
+		    
+		    <action name="dealerDetailsForCementPurchase" class="com.bst.ckt.action.PurchaseCementAction" method="getDealerDetails">
+			</action>
+		    
+		     <action name="addPurchaseCementDetails" class="com.bst.ckt.action.PurchaseCementAction" method="addPurchaseCement">
+			<result name="success" type="redirect">purchaseDashbord.action</result>
+			<result name="success" type="redirect">purchaseDashbord.action</result>
+		    </action>
+		    
+		    
+		    <action name="viewCementPurchaseDetails" class="com.bst.ckt.action.PurchaseCementAction"
+			method="viewSpecificSDetail">
+			<result name="success" type="tiles">view_cement_purchase_details</result>
+			<result name="error" type="tiles">view_cement_purchase_details</result>
+		</action>
+		
+		
+		<action name="deleteCementPurchaseDetails" class="com.bst.ckt.action.PurchaseCementAction"
+			method="deleteSpecificCementPurchaseDetails">
+			<result name="success" type="redirect">purchaseDashbord.action</result>
+			<result name="error" type="tiles">purchase_dashbord</result>
+		</action>
+		
+		<action name="dealerDetailsForSteelBarPurchase" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="getDealerDetails">
+			</action>
+			
+			<action name="addPurchaseSteelbarsDetails" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="addPurchaseSteelbar">
+			<result name="success" type="redirect">steelBarDashbord.action</result>
+			<result name="error" type="redirect">addPurchaseSteelbarsDetails.action</result>
+		    </action>
+		    
+		    <action name="viewSteelbarPurchaseDetails" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="viewSpecificSteelBarPurchaseDetail">
+			<result name="success" type="tiles">view_steelbar_purchase_detail</result>
+			<result name="error" type="tiles">view_steelbar_purchase_detail</result>
+		</action>
+		
+		<action name="deleteSpecificSteelbarPurchase" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="deleteSpecificSteelbarPurchaseDetails">
+			<result name="success" type="redirect">steelBarDashbord.action</result>
+			<result name="error" type="tiles">steel_Bar_dashbord</result>
+		</action>
+		
+		<action name="editPurchaseDetail" class="com.bst.ckt.action.PurchaseCementAction" method="retrivePurchaseCementDetailsForEdit" >
+			<result name="success" type="tiles">edit_purchase_details</result>
+			<result name="error" type="tiles">edit_purchase_details</result>
+		</action>
+		
+		<action name="updatePurchaseDetail" class="com.bst.ckt.action.PurchaseCementAction" method="updateSpecificPurchaseRecord" >
+			<result name="success" type="redirect">purchaseDashbord.action</result>
+			<result name="error" type="tiles">edit_purchase_details</result>
+		</action>
+		
+		<action name="editPurchaseSteelbarDetail" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="retrivePurchaseSteelbarDetailsForEdit" >
+			<result name="success" type="tiles">edit_purchase_steelbar_details</result>
+			<result name="error" type="tiles">edit_purchase_steelbar_details</result>
+		</action>
+		
+		<action name="updatePurchaseSteelbarDetail" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="updateSpecificPurchaseRecord" >
+			<result name="success" type="redirect">steelBarDashbord.action</result>
+			<result name="error" type="tiles">edit_purchase_steelbar_details</result>
+		</action>
+		
+		<action name="viewDealerTransactionDashboard" class="com.bst.ckt.action.DealerAction" method="execute" >
+			<result name="success" type="tiles">view_dealer_transaction_dashboard</result>
+			<result name="error" type="tiles">view_dealer_transaction_dashboard</result>
+		</action>
+		
+		
+		
+		<action name="viewDealerDashboard" class="com.bst.ckt.action.DealerAction"  method="execute">
+			<result name="success" type="tiles">dealer_dashboard</result>
+			<result name="error" type="tiles">dealer_dashboard</result>
+		</action>
+		
+		
+		
+		<action name="addNewDealer" class="com.bst.ckt.action.DealerAction" >
+			<result name="success" type="tiles">add_dealer</result>
+			<result name="error" type="tiles">add_dealer</result>
+		</action>
+		
+		<action name="insertNewDealer" class="com.bst.ckt.action.DealerAction" method="addDealer" >
+			<result name="success" type="redirect">viewDealerDashboard.action</result>
+			<result name="error" type="tiles">add_dealer</result>
+		</action>
+		
+		<action name="viewSpecificDealerDetail" class="com.bst.ckt.action.DealerAction" method="viewSpecificDealerDetail" >
+			<result name="success" type="tiles">view_specific_dealer</result>
+			<result name="error" type="tiles">view_specific_dealer</result>
+		</action>
+		
+		
+		<action name="deleteDealerDetail" class="com.bst.ckt.action.DealerAction" method="deleteSpecificDealerDetails" >
+			<result name="success" type="redirect">viewDealerDashboard.action</result>
+			<result name="error" type="redirect">viewDealerDashboard.action</result>
+		</action>
+		
+		<action name="ViewDealerDetailForEdit" class="com.bst.ckt.action.DealerAction" method="viewSpecificRecordForEdit" >
+			<result name="success" type="tiles">view_specific_dealer_for_edit</result>
+			<result name="error" type="tiles">view_specific_dealer_for_edit</result>
+		</action>
+		
+		<action name="updateDealerDetail" class="com.bst.ckt.action.DealerAction" method="updateSpecificDealerRecord" >
+			<result name="success" type="redirect">viewDealerDashboard.action</result>
+			<result name="error" type="redirect">viewDealerDashboard.action</result>
+		</action>
+		
+		
+		<action name="viewDealerTransaction" class="com.bst.ckt.action.DealerAction" method="viewSpecificDealerTransaction" >
+			<result name="success" type="tiles">view_specific_dealer_transaction</result>
+			<result name="error" type="tiles">view_specific_dealer_transaction</result>
+		</action>
+		
+		<action name="deleteDealerTransaction" class="com.bst.ckt.action.DealerAction" method="deleteSpecificDealerTransaction" >
+			<result name="success" type="redirect">viewDealerTransactionDashboard.action</result>
+			<result name="error" type="tiles">view_dealer_transaction_dashboard</result>
+		</action>
+		
+		<action name="purchasePrintPDF" class="com.bst.ckt.action.PurchaseCementAction"
+			method="purchasePrintPDF">
+
+		</action>
+		
+		
+		<action name="purchaseSteelPrintPDF" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="purchasePrintPDF">
+       </action>
+		
+		<action name="viewRetailerTransaction" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewSpecificRetailerTransaction">
+			<result name="success" type="tiles">view_specific_retailer_transaction</result>
+			<result name="error" type="tiles">view_specific_retailer_transaction</result>
+       </action>
+       
+       <action name="deleteRetailerTransaction" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="deleteSpecificRetailerTransaction">
+			<result name="success" type="redirect">completeRetailerTransaction.action</result>
+			<result name="error" type="tiles">viewCompleteRetailerDetails</result>
+       </action>
+       
+       
+       <action name="viewConsumerTransactionAction" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewSpecificConsumerTransaction">
+			<result name="success" type="tiles">view_specific_consumer_transaction</result>
+			<result name="error" type="tiles">view_specific_consumer_transaction</result>
+       </action>
+       
+        <action name="deleteConsumerTransaction" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="deleteSpecificConsumerTransaction">
+			<result name="success" type="redirect">completeConsumerTransaction.action</result>
+			<result name="error" type="tiles">viewCompleteConsumerDetails</result>
+       </action>
+       
+       
+       <action name="dealerTransactionPrintPDF" class="com.bst.ckt.action.DealerAction"
+			method="dealerTransactionPrintPDF">
+       </action>
+		 
+		 
+		 <action name="consumerTransactionPrintPDF" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="consumerTransactionPrintPDF">
+       </action>
+       
+       <action name="retailerTransactionPrintPDF" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="retailerTransactionPrintPDF">
+       </action>
+       
+       <action name="dealerDetailPrintPDF" class="com.bst.ckt.action.DealerAction"
+			method="dealerDetailPrintPDF">
+       </action>
+       
+       <action name="consumerDetailPrintPDF" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="consumerDetailsPrintPDF">
+       </action>
+       
+       <action name="retailerDetailPrintPDF" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="retailerDetailPrintPDF">
+       </action>
+       
+       <action name="purchaseCementExcelReport" class="com.bst.ckt.action.PurchaseCementAction"
+			method="purchaseCementExcelReport">
+		</action>
+		
+		
+		<action name="purchaseSteelbarExcelReport" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="purchaseSteelBarExcelReport">
+		</action>
+		
+		<action name="retailerDetailExcelReport" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="retailerDetailExcelReport">
+		</action>
+		
+		<action name="consumerDetailExcelReport" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="consumerDetailExcelReport">
+		</action>
+		
+		<action name="dealerDetailExcelReport" class="com.bst.ckt.action.DealerAction"
+			method="dealerDetailExcelReport">
+		</action>
+		
+		
+		<action name="retailerTransactionExcelReport" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="retailerTransactionExcelReport">
+		</action>
+		
+		<action name="consumerTransactionExcelReport" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="consumerTransactionExcelReport">
+		</action>
+		
+		<action name="dealerTransactionExcelReport" class="com.bst.ckt.action.DealerAction"
+			method="dealerTransactionExcelReport">
+		</action>
+		
+		
+		 <action name="populatePurchaseCementDetailsAsPerSearch" class="com.bst.ckt.action.PurchaseCementAction"
+			method="viewCementPurchsaseDetailsGrid">
+			<result name="success" type="tiles">purchase_dashbord</result>
+			<result name="error" type="tiles">purchase_dashbord</result>
+		</action> 
+		
+		
+		
+		
+		<action name="populatePurchaseSteelbarDetailsAsPerSearch" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="viewSteelBarPurchsaseDetailsGrid">
+			<result name="success" type="tiles">steel_Bar_dashbord</result>
+			<result name="error" type="tiles">steel_Bar_dashbord</result>
+		</action> 
+		
+		<action name="populateRetailerDetailsAsPerSearch" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewRetailerDetailsGrid">
+			<result name="success" type="tiles">customer_dashboard</result>
+			<result name="error" type="tiles">customer_dashboard</result>
+		</action> 
+		
+		
+		
+		<action name="populateConsumerDetailsAsPerSearch" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewConsumerDetailsGrid">
+			<result name="success" type="tiles">consumer_Dashboard</result>
+			<result name="error" type="tiles">consumer_Dashboard</result>
+		</action> 
+		
+		<action name="populateDealerDetailsAsPerSearch" class="com.bst.ckt.action.DealerAction"
+			method="viewDealerDetailsGrid">
+			<result name="success" type="tiles">dealer_dashboard</result>
+			<result name="error" type="tiles">dealer_dashboard</result>
+		</action> 
+		
+		<action name="populateRetailerTransactionAsPerSearch" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewRetailerTransactionDetailsGrid">
+			<result name="success" type="tiles">viewCompleteRetailerDetails</result>
+			<result name="error" type="tiles">viewCompleteRetailerDetails</result>
+		</action>
+		
+		<action name="populateConsumerTransactionAsPerSearch" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewConsumerTransactionDetailsGrid">
+			<result name="success" type="tiles">viewCompleteConsumerDetails</result>
+			<result name="error" type="tiles">viewCompleteConsumerDetails</result>
+		</action>
+		
+		
+		
+		<action name="populateDealerTransactionAsPerSearch" class="com.bst.ckt.action.DealerAction"
+			method="viewDealerTransactionDetailsGrid">
+			<result name="success" type="tiles">view_dealer_transaction_dashboard</result>
+			<result name="error" type="tiles">view_dealer_transaction_dashboard</result>
+		</action>
+		
+		
+		<action name="viewNextPurchaseCementInfo" class="com.bst.ckt.action.PurchaseCementAction"
+			method="viewNextPurchaseCementDetail">
+			<result name="success" type="tiles">view_cement_purchase_details</result>
+			<result name="error" type="tiles">view_cement_purchase_details</result>
+		</action>
+		
+		<action name="viewPreviousPurchaseCementInfo" class="com.bst.ckt.action.PurchaseCementAction"
+			method="viewPreviousPurchaseCement">
+			<result name="success" type="tiles">view_cement_purchase_details</result>
+			<result name="error" type="tiles">view_cement_purchase_details</result>
+		</action>
+		
+		<action name="viewNextPurchaseSteelbarInfo" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="viewNextPurchaseSteelbarDetail">
+			<result name="success" type="tiles">view_steelbar_purchase_detail</result>
+			<result name="error" type="tiles">view_steelbar_purchase_detail</result>
+		</action>
+		
+		<action name="viewPreviousPurchaseSteelbarInfo" class="com.bst.ckt.action.PurchaseSteelBarsAction"
+			method="viewPreviousPurchaseSteelbar">
+			<result name="success" type="tiles">view_steelbar_purchase_detail</result>
+			<result name="error" type="tiles">view_steelbar_purchase_detail</result>
+		</action>
+		
+		
+		<action name="viewNextDealerDetailInfo" class="com.bst.ckt.action.DealerAction"
+			method="viewNextDealerDetail">
+			<result name="success" type="tiles">view_specific_dealer</result>
+			<result name="error" type="tiles">view_specific_dealer</result>
+		</action>
+		
+		<action name="viewPreviousDealerDetailInfo" class="com.bst.ckt.action.DealerAction"
+			method="viewPreviousDealerDetail">
+			<result name="success" type="tiles">view_specific_dealer</result>
+			<result name="error" type="tiles">view_specific_dealer</result>
+		</action>
+		
+		<action name="viewNextRetailerDetailInfo" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewNextRetailerDetail">
+			<result name="success" type="tiles">viewRetailerCustomerdetail</result>
+			<result name="error" type="tiles">viewRetailerCustomerdetail</result>
+		</action>
+		
+		<action name="viewPreviousRetailerDetailInfo" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewPreviousRetailerDetail">
+			<result name="success" type="tiles">viewRetailerCustomerdetail</result>
+			<result name="error" type="tiles">viewRetailerCustomerdetail</result>
+		</action>
+		
+		<action name="viewNextConsumerDetailInfo" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewNextConsumerDetail">
+			<result name="success" type="tiles">viewConsumerCustomerdetail</result>
+			<result name="error" type="tiles">viewConsumerCustomerdetail</result>
+		</action>
+		
+		<action name="viewPreviousConsumerDetailInfo" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewPreviousConsumerDetail">
+			<result name="success" type="tiles">viewConsumerCustomerdetail</result>
+			<result name="error" type="tiles">viewConsumerCustomerdetail</result>
+		</action>
+		
+		<action name="viewNextRetailerTransactionInfo" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewNextRetailerTransaction">
+			<result name="success" type="tiles">view_specific_retailer_transaction</result>
+			<result name="error" type="tiles">view_specific_retailer_transaction</result>
+		</action>
+		
+		<action name="viewPreviousRetailerTransactionInfo" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="viewPreviousRetailerTransaction">
+			<result name="success" type="tiles">view_specific_retailer_transaction</result>
+			<result name="error" type="tiles">view_specific_retailer_transaction</result>
+		</action> 
+		
+		<action name="viewNextConsumerTransactionInfo" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewNextConsumerTransaction">
+			<result name="success" type="tiles">view_specific_consumer_transaction</result>
+			<result name="error" type="tiles">view_specific_consumer_transaction</result>
+		</action>
+		
+		<action name="viewPreviousConsumerTransactionInfo" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="viewPreviousConsumerTransaction">
+			<result name="success" type="tiles">view_specific_consumer_transaction</result>
+			<result name="error" type="tiles">view_specific_consumer_transaction</result>
+		</action> 
+		
+		<action name="viewNextDealerTransactionInfo" class="com.bst.ckt.action.DealerAction"
+			method="viewNextDealerTransaction">
+			<result name="success" type="tiles">view_specific_dealer_transaction</result>
+			<result name="error" type="tiles">view_specific_dealer_transaction</result>
+		</action>
+		
+		<action name="viewPreviousDealerTransactionInfo" class="com.bst.ckt.action.DealerAction"
+			method="viewPreviousDealerTransaction">
+			<result name="success" type="tiles">view_specific_dealer_transaction</result>
+			<result name="error" type="tiles">view_specific_dealer_transaction</result>
+		</action>
+		
+		<action name="salesPrintPDF" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="salesPrintPDF">
+
+		</action>
+		
+		<action name="salesExcelReport" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="salesExcelReport">
+		</action>
+		
+		<action name="viewNextSalesInfo" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="viewNextSalesDetail">
+			<result name="success" type="tiles">view_sale_invoice_detail</result>
+			<result name="error" type="tiles">view_sale_invoice_detail</result>
+		</action>
+		
+		<action name="viewPreviousSalesInfo" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="viewPreviousSalesDetails">
+			<result name="success" type="tiles">view_sale_invoice_detail</result>
+			<result name="error" type="tiles">view_sale_invoice_detail</result>
+		</action>
+		
+		<action name="populateSalesDetailsAsPerSearch" class="com.bst.ckt.action.InvoiceSaleAction"
+			method="viewSalesDetailsGrid">
+			<result name="success" type="tiles">invoice_dashboard</result>
+			<result name="error" type="tiles">invoice_dashboard</result>
+		</action> 
+		
+		<action name="payDueAmountOfDealer" class="com.bst.ckt.action.DealerAction" method="retrieveDealerTransactionByIdForPayDue">
+			<result name="success" type="tiles">payDueAmountOfDealer</result>
+			<result name="error" type="tiles">payDueAmountOfDealer</result>
+		</action>
+		
+		<action name="addPayDueDealerTransaction" class="com.bst.ckt.action.DealerAction" method="addPayDue">
+			<result name="success" type="redirect">viewDealerTransactionDashboard.action</result>
+			<result name="error" type="tiles">payDueAmountOfDealer</result>
+		</action>
+		
+		
+		<action name="updateConsumerDetailsDone" class="com.bst.ckt.action.ConsumerCustomerAction" method="updateSpecificConsumerRecord">
+			<result name="success" type="redirect">consumerDashboardAction.action</result>
+			<result name="error" type="tiles">updateConsumerDetails</result>
+		    </action>
+		    
+		    <action name="cityListForRetailer" class="com.bst.ckt.action.RetailerCustomerAction"
+			method="getCityJASONList">
+		</action>
+		
+		<action name="stockDashboard" class="com.bst.ckt.action.StockAction" method="execute">
+			<result name="success" type="tiles">stock_dashboard</result>
+			<result name="error" type="tiles">stock_dashboard</result>
+		    </action>
+		    
+		    <action name="steelbarStock" class="com.bst.ckt.action.PurchaseSteelBarsAction" method="viewSteelbarStockGrid">
+			<result name="success" type="tiles">steelbar_stock_dashboard</result>
+			<result name="error" type="tiles">steelbar_stock_dashboard</result>
+		    </action>
+		    
+		     <action name="cityListForConsumer" class="com.bst.ckt.action.ConsumerCustomerAction"
+			method="getCityJASONList">
+		</action>
+		
+		
+		<action name="cityListForDealer" class="com.bst.ckt.action.DealerAction"
+			method="getCityJASONList">
+		</action>
+		
+		
+		
+		<action name="productTypeListByCategory" class="com.bst.ckt.action.ProductAction"
+			method="getProductTypeJASONList">
+		</action>
+		
+		<action name="settingProductTypeAction" class="com.bst.ckt.action.SettingAction">
+			<result name="success" type="tiles">setting_product_Type</result>
+			<result name="error" type="tiles">setting_product_Type</result>
+		    </action>
+		    
+		    
+		    <action name="insertProductType" class="com.bst.ckt.action.SettingAction" method="insertProductType">
+			<result name="success" type="tiles">setting_product_Type</result>
+			<result name="error" type="tiles">setting_product_Type</result>
+			<result name="none" type="tiles">setting_product_Type</result>
+		</action> 
+		
+		<action name="settingEditProductType" class="com.bst.ckt.action.SettingAction"
+			method="editProductType">
+			<result name="success" type="tiles">setting_edit_product_Type</result>
+		</action>
+		
+		<action name="settingUpdateProductType" class="com.bst.ckt.action.SettingAction"
+			method="updateProductType">
+			<result name="success" type="tiles">setting_edit_product_Type</result>
+			<result name="input" type="tiles">setting_edit_product_Type</result>
+			<result name="none" type="tiles">setting_edit_product_Type</result>
+		</action>
+		
+		<action name="stockExcelReport" class="com.bst.ckt.action.StockAction"
+			method="stockDetailExcelReport">
+		</action>
+		
+		<action name="populateStockDetailsAsPerSearch" class="com.bst.ckt.action.StockAction" method="viewStockDetailsGrid">
+			<result name="success" type="tiles">stock_dashboard</result>
+			<result name="error" type="tiles">stock_dashboard</result>
+		</action> 
+		
+		
+		
+		<action name="transportDashboardAction" class="com.bst.ckt.action.TransportAction" method="TransportDetailsGrid">
+			<result name="success" type="tiles">transport_Dashboard_Action</result>
+			<result name="error" type="tiles">transport_Dashboard_Action</result>
+		</action>
+		
+		<action name="addNewTransport" class="com.bst.ckt.action.TransportAction">
+			<result name="success" type="tiles">addNew_Transport</result>
+			<result name="error" type="tiles">addNew_Transport</result>
+		</action>
+		
+		
+		<action name="insertTransportDetails" class="com.bst.ckt.action.TransportAction" method="TransportRequest">
+			<result name="success" type="tiles">transport_Dashboard_Action</result>
+			<result name="error" type="tiles">transport_Dashboard_Action</result>
+		</action>
+		
+		
+		<action name="deleteTransportDetail" class="com.bst.ckt.action.TransportAction" method="deleteTransportDetails">
+			<result name="success" type="tiles">transport_Dashboard_Action</result>
+		</action>
+		
+		
+		<action name="viewTransport" class="com.bst.ckt.action.TransportAction" method="retrivedTransportDetails">
+			<result name="success" type="tiles">view_Transport</result>
+			<result name="error" type="tiles">view_Transport</result>
+		</action>
+		
+		
+		<action name="editTransport" class="com.bst.ckt.action.TransportAction" method="editTransportDetails">
+			<result name="success" type="tiles">edit_Transport</result>
+			<result name="error" type="tiles">edit_Transport</result>
+		</action>
+		
+		    <action name="updateTransportDetail" class="com.bst.ckt.action.TransportAction" method="updateTransportDetails">
+			<result name="success" type="tiles">transport_Dashboard_Action</result>
+			<result name="error" type="tiles">transport_Dashboard_Action</result>
+		</action>
+		    
+		    
+		    <action name="transportPrintPdf" class="com.bst.ckt.action.TransportAction" method="transportPrintPDF">
+		    </action>
+		    
+		    <action name="transportExcelReport" class="com.bst.ckt.action.TransportAction" method="excelReportTransport">
+			<result name="success" type="tiles">transport_Dashboard_Action</result>
+		</action>
+
+		<action name="viewNextTransportInfo" class="com.bst.ckt.action.TransportAction" method="nextViewTransport">
+			<result name="success" type="tiles">view_Transport</result>
+			<result name="error" type="tiles">view_Transport</result>
+		</action>
+		
+		
+		<action name="viewPreviousTransportInfo" class="com.bst.ckt.action.TransportAction" method="previousViewTransport">
+			<result name="success" type="tiles">view_Transport</result>
+			<result name="error" type="tiles">view_Transport</result>
+		</action>
+		
+		
+		<action name="settingPaymentMode" >
+			<result name="success" type="tiles">setting_Payment_Mode</result>
+		</action>
+		    
+		    
+		    
+		<action name="settingPaymentModeCase" class="com.bst.ckt.action.PaymentAction" method="PaymentDetailsGrid">
+			<result name="success" type="tiles">setting_PaymentMode_Case</result>
+			<result name="error" type="tiles">setting_PaymentMode_Case</result>
+		</action>
+		    
+		<action name="insertPaymentDetails" class="com.bst.ckt.action.PaymentAction" method="PaymentRequest">
+			<result name="success" type="tiles">setting_PaymentMode_Case</result>
+			<result name="error" type="tiles">setting_PaymentMode_Case</result>
+		</action>
+		    
+		    
+		    
+		    
+		    
+		    
+		    <action name="editPayment" class="com.bst.ckt.action.PaymentAction" method="editPaymentDetails">
+			<result name="success" type="tiles">edit_Payment</result>
+			<result name="error" type="tiles">edit_Payment</result>
+		</action>
+		
+		
+		
+		    <action name="updatePaymentDetail" class="com.bst.ckt.action.PaymentAction" method="updatePaymentDetails">
+			<result name="success" type="tiles">setting_PaymentMode_Case</result>
+			<result name="error" type="tiles">setting_PaymentMode_Case</result>
+		</action>
+		
+		    <action name="deletePaymentDetail" class="com.bst.ckt.action.PaymentAction" method="deletePaymentDetails">
+			<result name="success" type="tiles">setting_PaymentMode_Case</result>
+		</action>
+		
+		<action name="generateSpecificSalesBill" class="com.bst.ckt.action.InvoiceSaleAction" method="generateSpecificBillOfSale">
+		</action>
+		
+		
+		<!-- <action name="generateBill" class="com.bst.ckt.action.ProductAction" method="generateSpecificBillOfSale">
+		</action> -->
+		
+		<action name="ledgerDashboard" class="com.bst.ckt.action.LedgerAction" method="viewLedgerGrid">
+			<result name="success" type="tiles">ledger_dashboard</result>
+			<result name="error" type="tiles">ledger_dashboard</result>
+		</action>
+		
+		<action name="generateLedgerPDF" class="com.bst.ckt.action.LedgerAction" method="generateLedgerPDF">
+		</action>
+
+
+
+		
+		 <action name="outerCement">
+			<result name="success" type="tiles">cement_outer</result>
+			<result name="error" type="tiles">cement_outer</result>
+		</action>
+		
+		<action name="outerSteelbar">
+			<result name="success" type="tiles">steelbar_outer</result>
+			<result name="error" type="tiles">steelbar_outer</result>
+		</action>
+		
+		<action name="outerPaint">
+			<result name="success" type="tiles">paint_outer</result>
+			<result name="error" type="tiles">paint_outer</result>
+		</action>
+		
+		<action name="outerContact">
+			<result name="success" type="tiles">contact_outer</result>
+			<result name="error" type="tiles">contact_outer</result>
+		</action>
+		
+		<action name="outerAboutUs">
+			<result name="success" type="tiles">aboutus_outer</result>
+			<result name="error" type="tiles">aboutus_outer</result>
+		</action>
+		
+		
+		<action name="purchasePaint" class="com.bst.ckt.action.PurchaseWallPaintAction" method="execute">
+			<result name="success" type="tiles">purchase_paint</result>
+			<result name="error" type="tiles">purchase_paint</result>
+		</action>
+		
+		
+		<action name="addNewPaintPurchase" class="com.bst.ckt.action.PurchaseWallPaintAction" >
+			<result name="success" type="tiles">add_purchase_wall_paint</result>
+			<result name="error" type="tiles">add_purchase_wall_paint</result>
+		</action>
+		
+		
+		<action name="insertPaintPurchase" class="com.bst.ckt.action.PurchaseWallPaintAction" method="addPurchaseWallPaint">
+			<result name="success" type="redirect">purchasePaint.action</result>
+			<result name="error" type="tiles">add_purchase_wall_paint</result>
+		</action>
+		
+		
+		<action name="updatePaintPurchase" class="com.bst.ckt.action.PurchaseWallPaintAction" method="retrivePurchaseCementDetailsForEdit">
+			<result name="success" type="tiles">update_purchase_wall_paint</result>
+			<result name="error" type="tiles">update_purchase_wall_paint</result>
+		</action>
+		
+		<action name="updatePaintPurchaseDone" class="com.bst.ckt.action.PurchaseWallPaintAction" method="updateSpecificPurchaseRecord">
+			<result name="success" type="redirect">purchasePaint.action</result>
+			<result name="error" type="tiles">update_purchase_wall_paint</result>
+		</action>
+		
+		
+		<action name="purchasePesticidesAction" class="com.bst.ckt.action.PurchasePesticidesAction" method="execute">
+			<result name="success" type="tiles">purchase_pesticides</result>
+			<result name="error" type="tiles">purchase_pesticides</result>
+		</action>
+		
+		<action name="addPurchasePesticides" class="com.bst.ckt.action.PurchasePesticidesAction">
+			<result name="success" type="tiles">add_purchase_pesticides</result>
+			<result name="error" type="tiles">add_purchase_pesticides</result>
+		</action>
+		
+			<action name="insertPurchasePesticides" class="com.bst.ckt.action.PurchasePesticidesAction" method="addPurchasePesticides">
+			<result name="success" type="redirect">purchasePesticidesAction.action</result>
+			<result name="error" type="tiles">purchase_pesticides</result>
+		</action>
+		
+		<action name="viewPurchasePesticides" class="com.bst.ckt.action.PurchasePesticidesAction" method="retrivedPesticidesDetails">
+			<result name="success" type="tiles">View_purchase_pesticides</result>
+			<result name="error" type="tiles">View_purchase_pesticides</result>
+		</action>
+		
+		
+		
+		
+		<action name="deletePesticides" class="com.bst.ckt.action.PurchasePesticidesAction" method="deleteSpecificPesticidePurchaseDetails">
+			<result name="success" type="tiles">purchase_pesticides</result>
+			<result name="error" type="tiles">purchase_pesticides</result>
+		</action>
+		
+		  <action name="viewWallpaintPurchaseDetails" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="retrivedPurchaseWallPaint">
+			<result name="success" type="tiles">view_purchase_wall_paint</result>
+			<result name="error" type="tiles">view_purchase_wall_paint</result>
+		</action>
+		
+		 <action name="deleteWallpaintPurchaseDetails" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="deleteWallPaint">
+			<result name="success" type="redirect">purchasePaint.action</result>
+			<result name="error" type="redirect">purchasePaint.action</result>
+		</action>
+		
+		
+		<action name="populatePurchaseWallpaintDetailsAsPerSearch" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="getPurchaseWallPaintDetails">
+			<result name="success" type="tiles">purchase_paint</result>
+			<result name="error" type="tiles">purchase_paint</result>
+		</action> 
+		
+		
+		 <action name="PurchaseWallPaintPDF" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="purchaseWallPaintPrintPDF">
+		</action>
+		
+		
+		
+		<action name="viewPreviousPurchaseWallpaintInfo" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="viewPreviousPurchaseWallpaint">
+			<result name="success" type="tiles">view_purchase_wall_paint</result>
+			<result name="error" type="tiles">view_purchase_wall_paint</result>
+		</action>
+		
+		<action name="viewNextPurchaseWallpaintInfo" class="com.bst.ckt.action.PurchaseWallPaintAction"
+			method="viewNextPurchaseWallPaintDetail">
+			<result name="success" type="tiles">view_purchase_wall_paint</result>
+			<result name="error" type="tiles">view_purchase_wall_paint</result>
+		</action>
+		
+		<action name="populatePurchasePesticideDetailsAsPerSearch" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="getPurchasePesticidesDetails">
+			<result name="success" type="tiles">purchase_pesticides</result>
+			<result name="error" type="tiles">purchase_pesticides</result>
+		</action> 
+		
+		<action name="updatePesticides" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="retriveSpecificPurchaseDetailForUpdate">
+			<result name="success" type="tiles">update_pesticides</result>
+			<result name="error" type="tiles">update_pesticides</result>
+		</action>
+		
+		
+		<action name="updatePesticidePurchaseDone" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="updateSpecificPurchaseRecord">
+			<result name="success" type="redirect">purchasePesticidesAction.action</result>
+			<result name="error" type="tiles">update_pesticides</result>
+		</action>
+		
+		<action name="purchasePesticidesPrintPDF" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="purchasePrintPDF">
+		</action>
+		
+		
+		
+		<action name="viewPreviousPurchasePesticideInfo" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="viewPreviousPurchasePesticide">
+			<result name="success" type="tiles">View_purchase_pesticides</result>
+			<result name="error" type="tiles">View_purchase_pesticides</result>
+		</action>
+		
+		<action name="viewNextPurchasePesticideInfo" class="com.bst.ckt.action.PurchasePesticidesAction"
+			method="viewNextPurchasePesticideDetail">
+			<result name="success" type="tiles">View_purchase_pesticides</result>
+			<result name="error" type="tiles">View_purchase_pesticides</result>
+		</action>
+		
+		
+		
+		<action name="printExcel" class="com.bst.ckt.action.PurchaseCementAction"
+			method="createWorkbook">
+			
+		</action>
+		
+		
+		<action name="quickSaleInvoice" class="com.bst.ckt.action.InvoiceSaleAction"	method="execute">
+			<result name="success" type="tiles">quick_sale_invoice</result>
+			<result name="error" type="tiles">quick_sale_invoice</result>
+		</action>
+	</package>
+</struts>

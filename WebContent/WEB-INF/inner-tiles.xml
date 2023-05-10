@@ -1,0 +1,1833 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="inner_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Inner Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body" value="/pages/inner/dashboard.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+
+	<definition name="dashboard_Users" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory -Users Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body" value="/pages/inner/dashboardusers.jsp"/>
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+
+	<definition name="dashboard_Graph_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory -Quick Reports Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/dashboardgraphreports.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+
+	<definition name="dashboard_Analytics" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory -Analytics Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/dashboardanalytics.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+
+
+	<definition name="daily_lead_reports" extends="fullPageLayout">
+		<put-attribute name="title" value="Daily Lead Reports" />
+		<put-attribute name="body"
+			value="/pages/inner/Quick Reports/daily_lead_reports.jsp" />
+	</definition>
+
+	<definition name="daily_lead_reports_setting" extends="fullPageLayout">
+		<put-attribute name="title" value="Daily Lead Reports" />
+		<put-attribute name="body"
+			value="/pages/inner/Quick Reports/daily_lead_report_setting.jsp" />
+	</definition>
+
+
+
+	<definition name="inner_dashboard_body" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Inner Dashboard" />
+		<put-attribute name="header" value="/header.jsp" />
+		<put-attribute name="body" value="/dashboard.jsp" />
+		<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+
+
+	<!-- ***++++++++++++++***************First Login Setting**************** -->
+
+
+	<definition name="first_Loging_Pro" extends="settingPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Home" />
+
+		<put-attribute name="body"
+			value="/pages/inner/update_first_login_password.jsp" />
+	</definition>
+
+
+	<definition name="first_Loging_Company_Setting" extends="settingPageLayout">
+		<put-attribute name="title" value="Rohit Inventory - Home" />
+
+		<put-attribute name="body"
+			value="/pages/inner/update_Company_First_Loging.jsp" />
+	</definition>
+	<!-- ***++++++++++****************First Login Setting End**************** -->
+
+
+
+
+	<definition name="inner_dashboard_old" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Inner Dashboard" />
+		<put-attribute name="body" value="/pages/inner/dashboard.jsp" />
+	</definition>
+
+	<definition name="dashboard_page" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Home" />
+		<put-attribute name="body" value="/pages/inner/dashboard.jsp" />
+	</definition>
+
+
+	<definition name="setting_init" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_body.jsp" />
+	</definition>
+
+	<definition name="setting_company" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_company.jsp" />
+	</definition>
+
+	<definition name="setting_finance" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_finance.jsp" />
+	</definition>
+
+	<definition name="setting_tax" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_tax.jsp" />
+	</definition>
+
+	<definition name="setting_accounts" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_accounts.jsp" />
+	</definition>
+
+	<definition name="setting_bank" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_bank.jsp" />
+	</definition>
+
+	<definition name="setting_currency" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_currency.jsp" />
+	</definition>
+
+	<definition name="setting_invoicesetting" extends="innerSettingLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_invoicesetting.jsp" />
+	</definition>
+
+
+	<definition name="staff_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/staff_dashboard.jsp" />
+	</definition>
+	<definition name="staff_add" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/staff_add.jsp" />
+	</definition>
+	<definition name="staff_edit" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/staff_edit.jsp" />
+	</definition>
+	<definition name="client_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/client_dashboard.jsp" />
+	</definition>
+	<definition name="client_add" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/client_add.jsp" />
+	</definition>
+	<!-- <definition name="contacts_dashboard" extends="homeLayout"> <put-attribute 
+		name="title" value="Omera Invoice - Setting" /> <put-attribute name="body" 
+		value="/pages/inner/contacts_dashboard.jsp" /> </definition> -->
+	<definition name="items_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/items_dashboard.jsp" />
+	</definition>
+	<definition name="estimate_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/estimate_dashboard.jsp" />
+	</definition>
+	<definition name="invoice_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Invoice Sales" />
+		<put-attribute name="body" value="/pages/inner/invoice_dashboard.jsp" />
+	</definition>
+	<definition name="bill_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/bill_dashboard.jsp" />
+	</definition>
+	<definition name="reciept_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/reciept_dashboard.jsp" />
+	</definition>
+	<definition name="payment_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/payment_dashboard.jsp" />
+	</definition>
+	<definition name="reports_dashboard" extends="homeLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/reports_dashboard.jsp" />
+	</definition>
+	<definition name="user_profile" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Setting" />
+		<put-attribute name="body" value="/pages/inner/user_profile.jsp" />
+	</definition>
+
+	<definition name="myAccount_Social_Information" extends="fullPageLayout">
+		<put-attribute name="title" value="MyAccount Social Site Information" />
+		<put-attribute name="body"
+			value="/pages/inner/myAccount_social_information.jsp" />
+	</definition>
+
+	<definition name="Form_White" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body" value="/pages/inner/Form_Layout_White.jsp" />
+	</definition>
+
+	<definition name="dash_board" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Dashboard" />
+		<put-attribute name="body" value="/pages/inner/dashboard.jsp" />
+	</definition>
+
+
+
+
+
+	<!-- ****************** MyAccount ****************** -->
+
+	<definition name="myAccount_Security_ChangePassword"
+		extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/myAccount_Security_ChangePassword.jsp" />
+	</definition>
+
+	<definition name="myAccount_Security_ChangeEmail" extends="fullPageLayout">
+		<put-attribute name="title" value="Rohit Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/ myAccount_Security_ChangeEmail.jsp" />
+	</definition>
+
+	<definition name="table_Form" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body" value="/pages/inner/table.jsp" />
+	</definition>
+
+	<definition name="profile_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body" value="/pages/inner/profile_Templet.jsp" />
+	</definition>
+
+	<definition name="changePassword_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/changePassword_Templet.jsp" />
+	</definition>
+
+	<definition name="changeEmail_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/changeEmail_Templet.jsp" />
+	</definition>
+
+	<definition name="securityQuestion_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/securityQuesrtion_Templet.jsp" />
+	</definition>
+
+	<definition name="closeAccount_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/closeAccount_Templet.jsp" />
+	</definition>
+
+	<definition name="logger_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Form" />
+		<put-attribute name="body" value="/pages/inner/logger_Templet.jsp" />
+	</definition>
+
+	<!-- *************Start Lead's Tiles Mapping *************** -->
+
+
+	<definition name="lead_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Leads Dashboard" />
+		<put-attribute name="body" value="/pages/inner/lead_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_new_lead" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - New Lead" />
+		<put-attribute name="body" value="/pages/inner/add_new_lead.jsp" />
+	</definition>
+
+	<definition name="add_lead_clone" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - New Lead" />
+		<put-attribute name="body" value="/pages/inner/add_lead_clone.jsp" />
+	</definition>
+
+
+	<definition name="edit_Lead_Contact" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Lead Contact" />
+		<put-attribute name="body"
+			value="/pages/inner/update_Lead_Contact.jsp" />
+	</definition>
+
+	<definition name="update_Lead_Contact" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Lead Contact" />
+		<put-attribute name="body"
+			value="/pages/inner/update_Lead_Contact.jsp" />
+	</definition>
+
+
+	<definition name="add_Lead_Follow_Up" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Lead Follow Up" />
+		<put-attribute name="body"
+			value="/pages/inner/add_lead_follow_up.jsp" />
+	</definition>
+
+	<definition name="add_Lead_Social_Info" extends="fullPageLayout">
+		<put-attribute name="title"
+			value="Chouksay Inventory - Edit Lead Social Information" />
+		<put-attribute name="body"
+			value="/pages/inner/add_Lead_Social_Info.jsp" />
+	</definition>
+
+
+	<definition name="view_Lead" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - View Lead Details" />
+		<put-attribute name="body"
+			value="/pages/inner/view_lead_followUp.jsp" />
+	</definition>
+
+	<definition name="edit_Lead_Information" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Lead Information" />
+		<put-attribute name="body"
+			value="/pages/inner/update_Lead_Information.jsp" />
+	</definition>
+
+	<definition name="update_Lead_Information" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Lead Information" />
+		<put-attribute name="body"
+			value="/pages/inner/update_Lead_Information.jsp" />
+	</definition>
+
+	<!-- *************End Lead's Tiles Mapping *************** -->
+
+
+
+
+	<!-- ************* Start tiles mapping Campaign *************** -->
+
+	<definition name="campaign_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Campaign Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/campaign_Dashboard.jsp" />
+	</definition>
+
+	<definition name="new_Campaign" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Campaign Details" />
+		<put-attribute name="body" value="/pages/inner/new_Campaign.jsp" />
+	</definition>
+
+
+	<definition name="view_Campaign_Details" extends="fullPageLayout">
+		<put-attribute name="title" value="View Campaign Details" />
+		<put-attribute name="body"
+			value="/pages/inner/view_campaign_details.jsp" />
+	</definition>
+
+	<definition name="edit_Campaign_Details" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Campaign Details" />
+		<put-attribute name="body"
+			value="/pages/inner/edit_campaign_details.jsp" />
+	</definition>
+
+	<!-- ************* End tiles mapping Campaign *************** -->
+
+	<!-- ************* Start tiles mapping Vendors *************** -->
+
+	<definition name="vendors_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - Vendors Dashboard" />
+		<put-attribute name="body" value="/pages/inner/vendors_Dashboard.jsp" />
+	</definition>
+
+	<definition name="new_Vendors" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - New Vendors" />
+		<put-attribute name="body" value="/pages/inner/new_Vendors.jsp" />
+	</definition>
+
+	<definition name="edit_VendorDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - New Vendors" />
+		<put-attribute name="body"
+			value="/pages/inner/edit_venderDetails.jsp" />
+	</definition>
+
+	<definition name="view_VendorDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory Invoice - New Vendors" />
+		<put-attribute name="body"
+			value="/pages/inner/view_vendorDetails.jsp" />
+	</definition>
+
+	<!-- ************* End tiles mapping Vendors *************** -->
+
+
+	<!-- ************* Start tiles mapping Client *************** -->
+	<definition name="render_Acccounts_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Accounts Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/assets/accounts_Dashboard.jsp" />
+	</definition>
+
+	<definition name="render_Add_New_Account" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - New Account" />
+		<put-attribute name="body" value="/pages/inner/add_new_account.jsp" />
+	</definition>
+
+	<definition name="render_Account_Clone" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - New Account" />
+		<put-attribute name="body" value="/pages/inner/add_account_clone.jsp" />
+	</definition>
+
+	<definition name="populat_Account_Information" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Edit Account Information" />
+		<put-attribute name="body"
+			value="/pages/inner/populate_account_information.jsp" />
+	</definition>
+
+	<definition name="view_account_information" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - View Account Information" />
+		<put-attribute name="body"
+			value="/pages/inner/view_account_information.jsp" />
+	</definition>
+
+	<definition name="update_account_information" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Inventory - Update Account Information" />
+		<put-attribute name="body"
+			value="/pages/inner/populate_account_information.jsp" />
+	</definition>
+
+	<definition name="account_social_information" extends="fullPageLayout">
+		<put-attribute name="title"
+			value="Chouksay Inventory - Add Account Social Information" />
+		<put-attribute name="body"
+			value="/pages/inner/add_account_social_information.jsp" />
+	</definition>
+
+
+	<definition name="add_account_social_information" extends="fullPageLayout">
+		<put-attribute name="title"
+			value="Chouksay Inventory - Add Account Social Information" />
+		<put-attribute name="body"
+			value="/pages/inner/add_account_social_information.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Account *************** -->
+
+	<!-- ************* Start tiles mapping Contacts *************** -->
+	<definition name="contacts_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Contacts Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/contacts_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_Contacts" extends="fullPageLayout">
+		<put-attribute name="title" value="add Contacts" />
+		<put-attribute name="body" value="/pages/inner/add_Contacts.jsp" />
+	</definition>
+
+	<definition name="populate_Groups_Contact" extends="fullPageLayout">
+		<put-attribute name="title" value="Populate Groups Contact Details" />
+		<put-attribute name="body"
+			value="/pages/inner/populate_groups_contact_information.jsp" />
+	</definition>
+
+	<definition name="add_contact_social" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Groups Contact Social" />
+		<put-attribute name="body"
+			value="/pages/inner/add_groups_contact_social_info.jsp" />
+	</definition>
+
+	<definition name="view_contacts_information" extends="fullPageLayout">
+		<put-attribute name="title" value="View Contacts Information" />
+		<put-attribute name="body"
+			value="/pages/inner/view_contacts_details.jsp" />
+	</definition>
+	
+	<definition name="edit_contacts" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Contacts" />
+		<put-attribute name="body"
+		value="/pages/inner/edit_contacts.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Contacts *************** -->
+
+
+	<!-- ************* Start tiles mapping Target *************** -->
+	<definition name="target_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Target Dashboard" />
+		<put-attribute name="body" value="/pages/inner/target_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_Created_Target" extends="fullPageLayout">
+		<put-attribute name="title" value="Created Target" />
+		<put-attribute name="body"
+			value="/pages/inner/add_created_target.jsp" />
+	</definition>
+
+	<definition name="update_Follow_Target" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Follow Up Target" />
+		<put-attribute name="body"
+			value="/pages/inner/update_target_followUp.jsp" />
+	</definition>
+
+	<definition name="view_Follow_Up_Target" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Target" />
+		<put-attribute name="body"
+			value="/pages/inner/view_target_followUp.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Target *************** -->
+
+	<!-- ************* Start tiles mapping Assignment *************** -->
+	<definition name="assignment_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Assignment Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/assignment_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_Created_Assignment" extends="fullPageLayout">
+		<put-attribute name="title" value="Created Assignment" />
+		<put-attribute name="body"
+			value="/pages/inner/add_created_assignment.jsp" />
+	</definition>
+
+	<definition name="update_FollowUp_Assignment" extends="fullPageLayout">
+		<put-attribute name="title" value="Update FollowUp Assignment" />
+		<put-attribute name="body"
+			value="/pages/inner/update_assignment_followUp.jsp" />
+	</definition>
+
+	<definition name="view_FollowUp_Assignment" extends="fullPageLayout">
+		<put-attribute name="title" value="View FollowUp Assignment" />
+		<put-attribute name="body"
+			value="/pages/inner/view_assignment_followUp.jsp" />
+	</definition>
+	<definition name="view_assignment_details" extends="fullPageLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body"
+			value="/pages/inner/view_assignment_details.jsp" />
+	</definition>
+
+	<definition name="edit_assignment" extends="fullPageLayout">
+		<put-attribute name="title" value="Assignment Dashboard" />
+		<put-attribute name="body" value="/pages/inner/edit_assignments.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Assignment *************** -->
+
+
+	<!-- ************* Start tiles mapping Task *************** -->
+
+	<definition name="task_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Task Dashboard" />
+		<put-attribute name="body" value="/pages/inner/task_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_created_Task" extends="fullPageLayout">
+		<put-attribute name="title" value="Created Task" />
+		<put-attribute name="body" value="/pages/inner/add_new_task.jsp" />
+	</definition>
+
+	<definition name="populate_Task_Allocation_Details" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Task Allocation Details" />
+		<put-attribute name="body"
+			value="/pages/inner/populate_task_allocation_details.jsp" />
+	</definition>
+
+	<definition name="View_Task_Allocation_Details" extends="fullPageLayout">
+		<put-attribute name="title" value="View Task Allocation Details" />
+		<put-attribute name="body"
+			value="/pages/inner/view_task_allocation_details.jsp" />
+	</definition>
+
+	<!-- ************* End tiles mapping Task *************** -->
+
+
+	<!-- ************* Start tiles mapping Event *************** -->
+	<definition name="event_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Event Dashboard" />
+		<put-attribute name="body" value="/pages/inner/event_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_created_Event" extends="fullPageLayout">
+		<put-attribute name="title" value="Created Event" />
+		<put-attribute name="body" value="/pages/inner/add_created_event.jsp" />
+	</definition>
+
+	<definition name="view_event_details" extends="fullPageLayout">
+		<put-attribute name="title" value="View Event Details" />
+		<put-attribute name="body" value="/pages/inner/view_event.jsp" />
+	</definition>
+
+	<definition name="edit_event_detail" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Event Details" />
+		<put-attribute name="body"
+			value="/pages/inner/edit_event_details.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Event *************** -->
+
+
+	<!-- ************* Start tiles mapping Call *************** -->
+	<definition name="call_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Call Dashboard" />
+		<put-attribute name="body" value="/pages/inner/call_Dashboard.jsp" />
+	</definition>
+
+	<definition name="add_created_Call" extends="fullPageLayout">
+		<put-attribute name="title" value="Created Call" />
+		<put-attribute name="body" value="/pages/inner/add_created_call.jsp" />
+	</definition>
+
+	<definition name="update_FollowUp_Call" extends="fullPageLayout">
+		<put-attribute name="title" value="Update FollowUp Call" />
+		<put-attribute name="body"
+			value="/pages/inner/update_call_followUp.jsp" />
+	</definition>
+
+	<definition name="view_FollowUp_Call" extends="fullPageLayout">
+		<put-attribute name="title" value="View FollowUp Call" />
+		<put-attribute name="body"
+			value="/pages/inner/view_call_followUp.jsp" />
+	</definition>
+	<!-- ************* End tiles mapping Call *************** -->
+
+
+	<!-- *********************** CRM Reports *************************** -->
+
+	<definition name="crm_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead Reports" />
+		<put-attribute name="body"
+			value="/pages/inner/Quick Reports/reports_crm.jsp" />
+	</definition>
+
+	<definition name="group_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="Group Reports" />
+		<put-attribute name="body" value="/pages/inner/group_Reports.jsp" />
+	</definition>
+
+	<definition name="contacts_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body" value="/pages/inner/reports_contacts.jsp" />
+	</definition>
+
+	<definition name="target_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body" value="/pages/inner/reports_target.jsp" />
+	</definition>
+
+	<definition name="assignment_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body"
+			value="/pages/inner/reports_assignment.jsp" />
+	</definition>
+
+	<definition name="task_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body" value="/pages/inner/reports_task.jsp" />
+	</definition>
+
+	<definition name="event_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body" value="/pages/inner/reports_event.jsp" />
+	</definition>
+
+	<definition name="call_Reports" extends="fullPageLayout">
+		<put-attribute name="title" value="View Follow Up Lead" />
+		<put-attribute name="body" value="/pages/inner/reports_call.jsp" />
+	</definition>
+
+
+
+
+
+	<definition name="daily_group_reports" extends="fullPageLayout">
+		<put-attribute name="title" value="Daily Group Reports" />
+		<put-attribute name="body"
+			value="/pages/inner/daily_group_report.jsp" />
+	</definition>
+
+
+	<definition name="custom_Date_Group" extends="fullPageLayout">
+		<put-attribute name="title" value="Custom Date Group" />
+		<put-attribute name="body"
+			value="/pages/inner/custom_date_group_report.jsp" />
+	</definition>
+
+	<definition name="custom_Date_Lead" extends="fullPageLayout">
+		<put-attribute name="title" value="Custom Date Lead" />
+		<put-attribute name="body"
+			value="/pages/inner/custom_date_lead_report.jsp" />
+	</definition>
+
+
+	<definition name="lead_By_Owner" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead By Owner" />
+		<put-attribute name="body"
+			value="/pages/inner/lead_By_0wner_report.jsp" />
+	</definition>
+
+
+
+	<definition name="report_By_Company_Name" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead Report By Company Name" />
+		<put-attribute name="body"
+			value="/pages/inner/lead_report_by_companyname.jsp" />
+	</definition>
+
+
+	<definition name="lead_Follow_Up_Report" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead Follow-Up Report" />
+		<put-attribute name="body"
+			value="/pages/inner/lead_followup_report.jsp" />
+	</definition>
+
+	<definition name="lead_Created_By" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead Created By Report" />
+		<put-attribute name="body" value="/pages/inner/lead_createdby.jsp" />
+	</definition>
+
+
+	<definition name="lead_By_Status" extends="fullPageLayout">
+		<put-attribute name="title" value="Lead By Status Report" />
+		<put-attribute name="body" value="/pages/inner/lead_by_status.jsp" />
+	</definition>
+
+	<definition name="custom_Date_Group" extends="fullPageLayout">
+		<put-attribute name="title" value="Group By Status Report" />
+		<put-attribute name="body"
+			value="/pages/inner/custom_date_group_report.jsp" />
+	</definition>
+
+	<definition name="group_By_Owner" extends="fullPageLayout">
+		<put-attribute name="title" value="Group By Owner Report" />
+		<put-attribute name="body"
+			value="/pages/inner/group_by_owner_Reports.jsp" />
+	</definition>
+
+	<definition name="reportBy_Company_Name_Group" extends="fullPageLayout">
+		<put-attribute name="title" value="Report By Company Name" />
+		<put-attribute name="body"
+			value="/pages/inner/report_By_company_name_group.jsp" />
+	</definition>
+
+
+	<definition name="group_FollowUp_Report" extends="fullPageLayout">
+		<put-attribute name="title" value="Group Follow Up Report" />
+		<put-attribute name="body"
+			value="/pages/inner/group_followup_Reports.jsp" />
+	</definition>
+
+
+
+	<definition name="group_Created_By" extends="fullPageLayout">
+		<put-attribute name="title" value="Group Created By Report" />
+		<put-attribute name="body"
+			value="/pages/inner/group_createdby_Reports.jsp" />
+	</definition>
+
+	<definition name="group_By_Status" extends="fullPageLayout">
+		<put-attribute name="title" value="Group By Status Report" />
+		<put-attribute name="body"
+			value="/pages/inner/group_statusby_Reports.jsp" />
+	</definition>
+
+
+
+
+	<!-- ************* Settings ************* -->
+
+
+	<definition name="setting_company_country" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting"></put-attribute>
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_country.jsp"></put-attribute>
+	</definition>
+
+	<definition name="setting_edit_country" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_country.jsp" />
+	</definition>
+
+	<definition name="setting_company_timezone" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting"></put-attribute>
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_timezone.jsp"></put-attribute>
+	</definition>
+
+	<definition name="setting_Edit_Company_category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_company_category.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Tax" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_edit_tax.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Lead_Source" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_lead_Source.jsp" />
+	</definition>
+	<definition name="setting_Dashboard_Page" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_dashboard_page.jsp" />
+	</definition>
+
+	<definition name="company_setting" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_company.jsp" />
+	</definition>
+
+	<definition name="setting_Company_Type" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_type.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Company_Type" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_company_type.jsp" />
+	</definition>
+	<definition name="setting_Edit_GL_Account" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_glaccount.jsp" />
+	</definition>
+
+
+	<definition name="setting_Company_Category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_category.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Company_category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_company_category.jsp" />
+	</definition>
+
+	<definition name="setting_Company_Sector" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_sector.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Company_Sector" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_sector.jsp" />
+	</definition>
+
+	<definition name="setting_Company_Local" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_company_local.jsp" />
+	</definition>
+
+	<definition name="setting_Finance_Taxes" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/setting_finance.jsp" />
+	</definition>
+
+
+	<definition name="setting_Finance_GLaccount" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_finance_GLaccount.jsp" />
+	</definition>
+
+	<definition name="setting_Marketing_Lead_Source" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_leadsource.jsp" />
+	</definition>
+
+
+	<definition name="setting_Marketing_AccountType" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_accounttype.jsp" />
+	</definition>
+
+	<definition name="setting_Marketing_SLAName" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_SLAname.jsp" />
+	</definition>
+
+	<definition name="setting_Marketing_CampaignType" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_campaign.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Campaign_type" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_campaign_type.jsp" />
+	</definition>
+
+	<definition name="setting_Marketing_Response" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_response.jsp" />
+	</definition>
+
+	<definition name="setting_Marketing_VendorCategory" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_vendorcategory.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Vendor_Category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_vendor_category.jsp" />
+	</definition>
+	<definition name="setting_Edit_Travel_Mode" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_travel_mode.jsp" />
+	</definition>
+	<definition name="setting_Marketing_TravelMode" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_marketing_travelmode.jsp" />
+	</definition>
+
+	<definition name="setting_Product_Category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_product_category.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Product_category" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_product_category.jsp" />
+	</definition>
+
+	<definition name="setting_Product_Uses_Unit" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_product_uses_unit.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Product_Uses_Unit" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_product_uses_unit.jsp" />
+	</definition>
+
+	<definition name="setting_Support_FAQCategory" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_support_FAQcategory.jsp" />
+	</definition>
+
+	<definition name="setting_Support_Channel" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_support_channel.jsp" />
+	</definition>
+
+	<definition name="setting_Support_Case_Impact" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_support_case_impact.jsp" />
+	</definition>
+
+	<definition name="setting_Support_Task_Area" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_support_task_area.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_Account_type" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_account_type.jsp" />
+	</definition>
+
+
+	<definition name="settings_Local" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/settings_local.jsp" />
+	</definition>
+
+	<definition name="settings_User" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/settings_user.jsp" />
+	</definition>
+
+	<definition name="settings_Disclaimar" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body"
+			value="/pages/inner/settings_desclaimar.jsp" />
+	</definition>
+
+	<definition name="settings_Email" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/settings_email.jsp" />
+	</definition>
+
+	<definition name="settings_Other" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/settings_other.jsp" />
+	</definition>
+
+	<definition name="setting_Add_User" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/setting_add_user.jsp" />
+	</definition>
+
+	<definition name="setting_Edit_User" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_update_user.jsp" />
+	</definition>
+
+	<definition name="setting_View_User" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body" value="/pages/inner/setting_view_user.jsp" />
+	</definition>
+
+
+	<definition name="user_details_view" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_user_detail_view.jsp" />
+	</definition>
+
+	<!-- ************* Document Repository ************* -->
+
+	<definition name="document_Repository" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Repository" />
+		<put-attribute name="body"
+			value="/pages/inner/document_repository_dashboard.jsp" />
+	</definition>
+
+	<definition name="document_folder_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Directories Folder" />
+		<put-attribute name="body"
+			value="/pages/inner/document_folder_dashboard.jsp" />
+
+	</definition>
+
+	<!-- ************* User Profile Start ************* -->
+	<definition name="user_profile" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body" value="/pages/inner/user_profile.jsp" />
+	</definition>
+
+	<definition name="userProfile_Security_ChangePassword"
+		extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/userProfile_changePassword.jsp" />
+	</definition>
+
+	<definition name="userProfile_Security_ChangeEmail" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/userProfile_changeEmail.jsp" />
+	</definition>
+
+
+	<definition name="userProfile_Social_Information" extends="fullPageLayout">
+		<put-attribute name="title" value="MyAccount Social Site Information" />
+		<put-attribute name="body"
+			value="/pages/inner/userProfile_social_information.jsp" />
+	</definition>
+
+
+
+	<definition name="userProfile_Logger_Templet" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/userProfile_logger.jsp" />
+	</definition>
+	<!-- ************* User Profile End ************* -->
+
+	<!-- ******************* Expenses Mapping ********************** -->
+	<definition name="expenses_Travel_Bill" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_travel_bill.jsp" />
+	</definition>
+
+
+
+
+	<definition name="expenses_Dasboard_Monthly" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_dashbord_tour.jsp" />
+	</definition>
+
+
+
+
+	<definition name="expenses_Tours" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body" value="/pages/inner/tour_expenses.jsp" />
+	</definition>
+
+
+	<definition name="edit_expenses_details" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/editExpensesDetails.jsp" />
+	</definition>
+
+
+	<definition name="view_Expenses" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body" value="/pages/inner/viewExpenses.jsp" />
+	</definition>
+
+	<definition name="assignments_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Assignment Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/assignments_Dashboard.jsp" />
+	</definition>
+
+	<definition name="view_assignment_details" extends="fullPageLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body"
+			value="/pages/inner/view_assignment_details.jsp" />
+	</definition>
+
+
+	<definition name="add_new_assignment" extends="fullPageLayout">
+		<put-attribute name="title" value="Assignment Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/add_new_assignment.jsp" />
+	</definition>
+
+	<!--View Monthy travel expenses ************************************************** -->
+	<definition name="view_Monthly_Travel_Expenses" extends="fullPageLayout">
+		<put-attribute name="title" value="VCRM - View monthy travel expenses" />
+		<put-attribute name="body"
+			value="/pages/inner/viewExpensesTravel.jsp" />
+	</definition>
+	<!-- End View Monthy travel expenses -->
+
+	<!--View other expenses -->
+	<definition name="viewOther_Expenses" extends="fullPageLayout">
+		<put-attribute name="title" value="VCRM - View other expenses" />
+		<put-attribute name="body" value="/pages/inner/viewOtherExpenses.jsp" />
+	</definition>
+	<!-- End View other expenses -->
+
+	<definition name="expenses_Monthly" extends="fullPageLayout">
+		<put-attribute name="title" value="Expenses Monthly" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_monthly_bill.jsp" />
+	</definition>
+
+
+	<definition name="view_expenses_Monthly" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View Cases" />
+		<put-attribute name="body"
+			value="/pages/inner/view_expenses_monthly.jsp" />
+	</definition>
+	<definition name="edit_expenses_Monthly" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View Cases" />
+		<put-attribute name="body"
+			value="/pages/inner/editExpensesMonthly.jsp" />
+	</definition>
+
+
+
+
+
+	<definition name="expenses_Travel_Bill" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_travel_bill.jsp" />
+	</definition>
+
+
+
+	<definition name="expenses_monthly_other" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_monthly_bill.jsp" />
+	</definition>
+
+
+	<definition name="expenses_Dasboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksay Traders - Form" />
+		<put-attribute name="body"
+			value="/pages/inner/expenses_dashboard_monthly.jsp" />
+	</definition>
+
+	<!-- ******************* Expenses Mapping End ****************** -->
+
+
+	<!-- ************* Start tiles mapping Support *************** -->
+
+	<!-- ************* Start tiles mapping Support *************** -->
+
+	<definition name="Support_Faqs" extends="fullPageLayout">
+		<put-attribute name="title" value="Support FAQ's" />
+		<put-attribute name="body" value="/pages/Support/Support_Faqs.jsp" />
+	</definition>
+
+	<definition name="Support_Add_Faqs" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Add FAQ'S" />
+		<put-attribute name="body" value="/pages/Support/Support_addFaq.jsp" />
+	</definition>
+
+	<definition name="support_View_Faq" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View FAQ'S" />
+		<put-attribute name="body" value="/pages/Support/view_faq.jsp" />
+	</definition>
+
+	<definition name="support_Edit_Faq" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Edit FAQ'S" />
+		<put-attribute name="body" value="/pages/Support/edit_faq.jsp" />
+	</definition>
+
+	<definition name="Support_Cases" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Cases" />
+		<put-attribute name="body" value="/pages/Support/Support_cases.jsp" />
+	</definition>
+
+	<definition name="Support_Add_Cases" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Add Cases" />
+		<put-attribute name="body"
+			value="/pages/Support/Support_addCases.jsp" />
+	</definition>
+
+	<definition name="support_Edit_Cases" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Edit Cases" />
+		<put-attribute name="body" value="/pages/Support/edit_cases.jsp" />
+	</definition>
+
+	<definition name="support_View_Cases" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View Cases" />
+		<put-attribute name="body" value="/pages/Support/view_Cases.jsp" />
+	</definition>
+
+	<definition name="Support_ticket_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Ticket Dashboard" />
+		<put-attribute name="body"
+			value="/pages/Support/ticket_Dashboard.jsp" />
+	</definition>
+
+	<definition name="Add_New_Ticket" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Add New Ticket" />
+		<put-attribute name="body" value="/pages/Support/add_new_ticket.jsp" />
+	</definition>
+
+	<definition name="edit_Ticket_Info" extends="fullPageLayout">
+		<put-attribute name="title" value="Support Edit Ticket" />
+		<put-attribute name="body" value="/pages/Support/edit_ticket.jsp" />
+	</definition>
+
+	<definition name="view_Ticket" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View Ticket" />
+		<put-attribute name="body" value="/pages/Support/viewTicket.jsp" />
+	</definition>
+
+	<definition name="Ticket_Product_Name" extends="fullPageLayout">
+		<put-attribute name="title" value="Ticket Add Product Name" />
+		<put-attribute name="body"
+			value="/pages/Support/ticket_add_productName.jsp" />
+	</definition>
+
+	<definition name="Ticket_Contact_Name" extends="fullPageLayout">
+		<put-attribute name="title" value="Ticket Add Contact Name" />
+		<put-attribute name="body"
+			value="/pages/Support/ticket_add_contactName.jsp" />
+	</definition>
+
+	<definition name="Support_Service_Contract_Dashboard"
+		extends="fullPageLayout">
+		<put-attribute name="title" value="Service Contract Dashboard" />
+		<put-attribute name="body"
+			value="/pages/Support/service_contract_dashboard.jsp" />
+	</definition>
+
+	<definition name="Add_Service_Contract" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Service Contract" />
+		<put-attribute name="body"
+			value="/pages/Support/add_service_contract.jsp" />
+	</definition>
+
+	<definition name="edit_Service_Contract" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Service Contract" />
+		<put-attribute name="body"
+			value="/pages/Support/edit_service_contract.jsp" />
+	</definition>
+
+	<definition name="view_Service_Contract" extends="fullPageLayout">
+		<put-attribute name="title" value="View Service Contract" />
+		<put-attribute name="body"
+			value="/pages/Support/view_service_contract.jsp" />
+	</definition>
+
+	<definition name="releted_to" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Releted To" />
+		<put-attribute name="body"
+			value="/PROJ037/WebContent/pages/Support/add_releted_to.jsp" />
+	</definition>
+
+
+	<!-- ************* End tiles mapping Support *************** -->
+
+
+
+
+
+	<!-- ****************** Note Tiles Start ****************** -->
+
+
+	<definition name="note_dash_board" extends="fullPageLayout">
+		<put-attribute name="title" value="Note - Dashboard" />
+		<put-attribute name="body" value="/pages/inner/note_dashboard.jsp" />
+	</definition>
+
+
+	<definition name="add_new_note" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Note - Dashboard" />
+		<put-attribute name="body" value="/pages/inner/add_New_Note.jsp" />
+	</definition>
+
+	<definition name="edit_note_details" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Note - Dashboard" />
+		<put-attribute name="body" value="/pages/inner/edit_noteDetails.jsp" />
+	</definition>
+
+	<definition name="view_note_details" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Note - Dashboard" />
+		<put-attribute name="body" value="/pages/inner/view_note_details.jsp" />
+	</definition>
+
+
+	<!-- ****************** Note Tiles End ****************** -->
+
+
+
+
+
+	<!-- ******************************Product Tiles Mapping Start***************** -->
+	<definition name="product_dash_board" extends="fullPageLayout">
+		<put-attribute name="title" value="Product Dashboard" />
+		<put-attribute name="body" value="/pages/inner/product_dashboard.jsp" />
+	</definition>
+
+	<definition name="add_new_product" extends="fullPageLayout">
+		<put-attribute name="title" value="VCRM - New Product" />
+		<put-attribute name="body" value="/pages/inner/add_new_product.jsp" />
+	</definition>
+
+	<definition name="edit_product_details" extends="fullPageLayout">
+		<put-attribute name="title" value="VCRM - Edit Product" />
+		<put-attribute name="body"
+			value="/pages/inner/edit_product_details.jsp" />
+	</definition>
+
+	<definition name="view_product_details" extends="fullPageLayout">
+		<put-attribute name="title" value="VCRM - View Product" />
+		<put-attribute name="body" value="/pages/inner/view_Product.jsp" />
+	</definition>
+	<!-- ******************************Product Tiles Mapping End***************** -->
+
+	<!--*******************************Activities Tiles Mapping Start******************** -->
+
+	<definition name="Activities_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Activities Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/activities_dashboard.jsp" />
+	</definition>
+
+	<definition name="Add_new_Activites" extends="fullPageLayout">
+		<put-attribute name="title" value="Activities Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/add_new_activities.jsp" />
+	</definition>
+	<!--*******************************Activities Tiles Mapping End******************** -->
+	<!-- ******************************DocumentTiles Mapping End***************** -->
+
+	<definition name="document_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Document Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/document_dashboard.jsp" />
+	</definition>
+
+
+	<definition name="add_new_document" extends="fullPageLayout">
+		<put-attribute name="title" value="Add new Document" />
+		<put-attribute name="body" value="/pages/inner/add_new_document.jsp" />
+	</definition>
+
+	<!-- ******************************Document Tiles Mapping End***************** -->
+
+
+	<!-- *********************** DAshboard Start ********************* -->
+	<definition name="dashboard_Grid_page" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM - Inner Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body" value="/pages/inner/dashboardgrid.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	<definition name="dashboard_Users_Grid" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM -Users Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/user_dashboard_grid_view.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+
+	<!-- *******************Dashboard End ********************************* -->
+	
+	
+	
+	<!-- ***************************Analytics Tiles Start ********************* -->
+	<definition name="lead_by_source_analytics" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM -Analytics Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/analytics_lead_Module.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+	<definition name="lead_by_status_analytics" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM -Analytics Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/analytics_lead_status.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+	<definition name="lead_by_created_by_analytics" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM -Analytics Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/analytics_lead_created_by.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+	<definition name="lead_by_industry_analytics" extends="fullPageLayout">
+		<put-attribute name="title" value="VanraCRM -Analytics Dashboard" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" />
+		<put-attribute name="body"
+			value="/pages/inner/analytics_lead_by_industry.jsp" />
+		<put-attribute name="footer" value="/pages/inner/footer.jsp" />
+	</definition>
+	
+
+
+	<!-- *************************** Analytical Tiles END********************** -->
+	
+	
+	<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
+	<!--****************************MHVIDISHA**************************  -->
+	
+	<definition name="add_new_item" extends="fullPageLayout">
+		<put-attribute name="title" value="MHV -Add Item" />
+		<put-attribute name="body" value="/pages/inner/add_Item.jsp" />
+	</definition>
+	
+	
+	<definition name="item_dash_board" extends="fullPageLayout">
+		<put-attribute name="title" value="Product Dashboard" />
+		<put-attribute name="body" value="/pages/inner/item_dashboard.jsp" />
+	</definition>
+	
+	<definition name="sales_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Sales Dashboard" />
+		<put-attribute name="body"
+			value="/pages/inner/sales_Dashboard.jsp" />
+	</definition>
+	
+	
+	<definition name="sales_bill" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Estimate" />
+		<put-attribute name="header" value="/pages/inner/header.jsp" /> 
+		<put-attribute name="body" value="/pages/inner/TestSales.jsp" /> 
+		 <put-attribute name="footer" value="/pages/inner/footer.jsp" /> 
+	</definition>
+	
+	<definition name="view_Estimate" extends="fullPageLayout">
+		<put-attribute name="title" value="Support View Ticket" />
+		<put-attribute name="body" value="/pages/inner/viewEstimate.jsp" />
+	</definition>
+	
+	
+	<!--****************************MHVIDISHA**************************  -->
+	<definition name="rahul_dashbord" extends="fullPageLayout">
+		<put-attribute name="title" value="Rahul Dashbord" />
+		<put-attribute name="body" value="/pages/inner/Rahul_dashbrd.jsp" />
+	</definition>
+	
+<definition name="purchase_dashbord" extends="fullPageLayout">
+		<put-attribute name="title" value="purchase Dashbord" />
+		<put-attribute name="body" value="/pages/inner/Purchase_dashbord.jsp" />
+	</definition>
+
+<definition name="add_New_Purchase" extends="fullPageLayout">
+		<put-attribute name="title" value="purchase" />
+		<put-attribute name="body" value="/pages/inner/New_Purchase.jsp" />
+	</definition>
+	
+
+<!--****************************STEEL BAR**************************  -->
+<definition name="steel_Bar_dashbord" extends="fullPageLayout">
+		<put-attribute name="title" value="steelBar Dashbord" />
+		<put-attribute name="body" value="/pages/inner/Steel_bar_dashbord.jsp" />
+	</definition>
+	
+	<!--****************************INVOICE**************************  -->
+<definition name="invoice_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Invoice Sale Dashbord" />
+		<put-attribute name="body" value="/pages/inner/InvoiceDashboard.jsp" />
+	</definition>
+	
+	<definition name="add_sale_invoice" extends="fullPageLayout">
+		<put-attribute name="title" value="Sale Invoice" />
+		<put-attribute name="body" value="/pages/inner/createSaleInvoice.jsp" />
+	</definition>
+
+<definition name="view_sale_invoice_detail" extends="fullPageLayout">
+		<put-attribute name="title" value="View Sale Invoice" />
+		<put-attribute name="body" value="/pages/inner/viewSalesInvoiceDetail.jsp" />
+	</definition>
+
+<!--****************************CUSTOMER**************************  -->
+
+<definition name="customer_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Customer Dashboard" />
+		<put-attribute name="body" value="/pages/inner/customerDashboard.jsp" />
+	</definition>
+	
+	<definition name="addRetailercustomer" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Retailer" />
+		<put-attribute name="body" value="/pages/inner/addRetailerCustomer.jsp" />
+	</definition>
+	
+	<definition name="consumer_Dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Consumer Dashboard" />
+		<put-attribute name="body" value="/pages/inner/consumerDashboard.jsp" />
+	</definition>
+	
+	
+	<definition name="addConsumerCustomer" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Consumer" />
+		<put-attribute name="body" value="/pages/inner/addConsumerCustomer.jsp" />
+	</definition>
+	
+	
+	<definition name="viewConsumerCustomerdetail" extends="fullPageLayout">
+		<put-attribute name="title" value="View Consumer" />
+		<put-attribute name="body" value="/pages/inner/ViewConsumerCustomerDetails.jsp" />
+	</definition>
+	
+	
+	<definition name="viewRetailerCustomerdetail" extends="fullPageLayout">
+		<put-attribute name="title" value="View Retailer" />
+		<put-attribute name="body" value="/pages/inner/ViewRetailerCustomerDetails.jsp" />
+	</definition>
+	
+	<definition name="viewCompleteRetailerDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Retailer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewCompleteRetailerTransaction.jsp" />
+	</definition>
+	
+	
+	<definition name="viewCompleteConsumerDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Consumer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewCompleteConsumerTransaction.jsp" />
+	</definition>
+	
+	<definition name="updateSaleInvoceDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Sales" />
+		<put-attribute name="body" value="/pages/inner/updateSaleInvoice.jsp" />
+	</definition>
+	
+	<definition name="updateRetailerDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Retailer" />
+		<put-attribute name="body" value="/pages/inner/updateRetailerCustomer.jsp" />
+	</definition>
+	
+	
+	<definition name="updateConsumerDetails" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Consumer" />
+		<put-attribute name="body" value="/pages/inner/updateConsumerCustomer.jsp" />
+	</definition>
+	
+	<definition name="payDueAmountOfCustomer" extends="fullPageLayout">
+		<put-attribute name="title" value="Pay Due Customer" />
+		<put-attribute name="body" value="/pages/inner/payDueAmountOfCustomer.jsp" />
+	</definition>
+	
+	
+	<definition name="payDueAmountOfConsumer" extends="fullPageLayout">
+		<put-attribute name="title" value="Pay Due Consumer" />
+		<put-attribute name="body" value="/pages/inner/payDueAmountOfConsumerCustomer.jsp" />
+	</definition>
+	
+	
+	<definition name="view_cement_purchase_details" extends="fullPageLayout">
+		<put-attribute name="title" value="View Cement Purchase" />
+		<put-attribute name="body" value="/pages/inner/viewCementPurchase.jsp" />
+	</definition>
+	
+	
+	<definition name="add_New_SteelBar" extends="fullPageLayout">
+		<put-attribute name="title" value="Add New Steelbar" />
+		<put-attribute name="body" value="/pages/inner/purchaseSteelBars.jsp" />
+	</definition>
+	
+	<definition name="view_steelbar_purchase_detail" extends="fullPageLayout">
+		<put-attribute name="title" value="View Sale Invoice" />
+		<put-attribute name="body" value="/pages/inner/viewSteelbarPurchase.jsp" />
+	</definition>
+	
+	<definition name="edit_purchase_details" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Purchase Cement" />
+		<put-attribute name="body" value="/pages/inner/updatePurchaseCement.jsp" />
+	</definition>
+	
+	<definition name="edit_purchase_steelbar_details" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Purchase Steelbar" />
+		<put-attribute name="body" value="/pages/inner/UpdatePurchaseSteelBar.jsp" />
+	</definition>
+	
+	<definition name="view_dealer_transaction_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Dealer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewCompleteDealerTransaction.jsp" />
+	</definition>
+	
+	<definition name="dealer_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Dealer Dashboard" />
+		<put-attribute name="body" value="/pages/inner/dealerDashboard.jsp" />
+	</definition>
+	
+	<definition name="add_dealer" extends="fullPageLayout">
+		<put-attribute name="title" value="Add Dealer" />
+		<put-attribute name="body" value="/pages/inner/addNewDealer.jsp" />
+	</definition>
+	
+	<definition name="view_specific_dealer" extends="fullPageLayout">
+		<put-attribute name="title" value="View Dealer Details" />
+		<put-attribute name="body" value="/pages/inner/viewDealerDetails.jsp" />
+	</definition>
+	
+	<definition name="view_specific_dealer_for_edit" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Dealer Details" />
+		<put-attribute name="body" value="/pages/inner/updateDealerDetail.jsp" />
+	</definition>
+	
+	<definition name="view_specific_dealer_transaction" extends="fullPageLayout">
+		<put-attribute name="title" value="View Dealer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewDealerTransaction.jsp" />
+	</definition>
+	
+	<definition name="view_specific_retailer_transaction" extends="fullPageLayout">
+		<put-attribute name="title" value="View Retailer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewRetailerTransaction.jsp" />
+	</definition>
+	
+	<definition name="view_specific_consumer_transaction" extends="fullPageLayout">
+		<put-attribute name="title" value="View Consumer Transaction" />
+		<put-attribute name="body" value="/pages/inner/viewConsumerTransaction.jsp" />
+	</definition>
+	
+	<definition name="payDueAmountOfDealer" extends="fullPageLayout">
+		<put-attribute name="title" value="Pay Due Dealer " />
+		<put-attribute name="body" value="/pages/inner/payDueOfDealerTransaction.jsp" />
+	</definition>
+	
+	<definition name="stock_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Cement Stock" />
+		<put-attribute name="body" value="/pages/inner/stockDashboard.jsp" />
+	</definition>
+	
+	
+	<definition name="steelbar_stock_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Steelbar Stock" />
+		<put-attribute name="body" value="/pages/inner/steelbarStock.jsp" />
+	</definition>
+	
+	<definition name="setting_product_Type" extends="fullPageLayout">
+		<put-attribute name="title" value="Product Type Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_product_type.jsp" />
+	</definition>
+	
+	<definition name="setting_edit_product_Type" extends="fullPageLayout">
+		<put-attribute name="title" value="Edit Product Type Setting" />
+		<put-attribute name="body"
+			value="/pages/inner/setting_edit_product_type.jsp" />
+	</definition>
+	
+	
+	<definition name="transport_Dashboard_Action" extends="fullPageLayout">
+		<put-attribute name="title" value="transport Dashboard" />
+		<put-attribute name="body" value="/pages/inner/transportdashboard.jsp" />
+	</definition>
+	
+
+	<definition name="addNew_Transport" extends="fullPageLayout">
+		<put-attribute name="title" value="add New transport" />
+		<put-attribute name="body" value="/pages/inner/addnewTransport.jsp" />
+	</definition>
+	
+	
+	<definition name="view_Transport" extends="fullPageLayout">
+		<put-attribute name="title" value="view transport" />
+		<put-attribute name="body" value="/pages/inner/viewTransport.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="edit_Transport" extends="fullPageLayout">
+		<put-attribute name="title" value="view transport" />
+		<put-attribute name="body" value="/pages/inner/editTransport.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="setting_Payment_Mode" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/settingPaymentMode.jsp" />
+	</definition>
+	
+	
+	<definition name="setting_PaymentMode_Case" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/settingPaymentModeCase.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="edit_Payment" extends="fullPageLayout">
+		<put-attribute name="title" value="Company Setting" />
+		<put-attribute name="body" value="/pages/inner/editPayment.jsp" />
+	</definition>
+	
+	
+	<definition name="ledger_dashboard" extends="fullPageLayout">
+		<put-attribute name="title" value="Ledger Dashboard" />
+		<put-attribute name="body" value="/pages/inner/ledgerDashboard.jsp" />
+	</definition>
+	
+	<!-- ///////////////////////////chouksey//////////////////////////////////// -->
+	<definition name="cement_outer" extends="outerExternalLayout">
+		<put-attribute name="title" value="Chouksey Traders- Cement" />
+		<put-attribute name="body" value="/cement.jsp" />
+	</definition>
+	
+	<definition name="steelbar_outer" extends="outerExternalLayout">
+		<put-attribute name="title" value="Chouksey Traders- Steelbar" />
+		<put-attribute name="body" value="/steelBars.jsp" />
+	</definition>
+	
+	
+	<definition name="paint_outer" extends="outerExternalLayout">
+		<put-attribute name="title" value="Chouksey Traders- Paints" />
+		<put-attribute name="body" value="/bergerPaint.jsp" />
+	</definition>
+	
+	<definition name="contact_outer" extends="outerExternalLayout">
+		<put-attribute name="title" value="Chouksey Traders- Contact" />
+		<put-attribute name="body" value="/contact.jsp" />
+	</definition>
+	
+	<definition name="aboutus_outer" extends="outerExternalLayout">
+		<put-attribute name="title" value="Chouksey Traders- About Us" />
+		<put-attribute name="body" value="/aboutUs.jsp" />
+	</definition>
+	
+	<definition name="purchase_paint" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksey Traders- Paints" />
+		<put-attribute name="body" value="/pages/inner/purchaseWallPaint.jsp" />
+	</definition>
+	
+	<definition name="add_purchase_wall_paint" extends="fullPageLayout">
+		<put-attribute name="title" value="Add New Wall Paint" />
+		<put-attribute name="body" value="/pages/inner/addNewWallPaint.jsp" />
+	</definition>
+	
+	<definition name="update_purchase_wall_paint" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Wall Paint" />
+		<put-attribute name="body" value="/pages/inner/updateWallPaint.jsp" />
+	</definition>
+	
+	
+	<definition name="purchase_pesticides" extends="fullPageLayout">
+		<put-attribute name="title" value="Purchase Pesticides" />
+		<put-attribute name="body" value="/pages/inner/purchasePesticides.jsp" />
+	</definition>
+	
+	<definition name="add_purchase_pesticides" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksey Traders- Pesticides" />
+		<put-attribute name="body" value="/pages/inner/addPurchasePesticides.jsp" />
+	</definition>
+	
+	<definition name="update_pesticides" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Pesticides" />
+		<put-attribute name="body" value="/pages/inner/uodatePurchasePesticide.jsp" />
+	</definition>
+	
+	<definition name="View_purchase_pesticides" extends="fullPageLayout">
+		<put-attribute name="title" value="Chouksey Traders- Pesticides" />
+		<put-attribute name="body" value="/pages/inner/View_Pesticides.jsp" />
+	</definition>
+	
+	
+	<definition name="view_purchase_wall_paint" extends="fullPageLayout">
+		<put-attribute name="title" value="Update Wall Paint" />
+		<put-attribute name="body" value="/pages/inner/ViewPurchaseWallPaint.jsp" />
+	</definition>
+	
+	
+	<definition name="quick_sale_invoice" extends="fullPageLayout">
+		<put-attribute name="title" value="Quick Sale" />
+		<put-attribute name="body" value="/pages/inner/createSaleInvoiceQuick.jsp" />
+	</definition>
+	
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
